@@ -214,6 +214,21 @@ p{
 .top-row .container{
 	transform: rotate(180deg);
 }
+
+.pawn{
+	width: 35px;
+	height: 35px;
+	border-radius: 35px;
+	display: inline-block;
+	margin: 5px;
+}
+.green{
+	background-color: #074210;
+}
+.blue{
+	background-color: blue;
+}
+
 .board{
 	/* transform: rotate(180deg); */
 }
