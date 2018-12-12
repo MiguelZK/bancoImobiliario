@@ -1,9 +1,5 @@
 
-class Die{
-    throw(){
-        return Math.floor(Math.random()*5)+1;
-    }
-}
+    let board = [];
 
 class Game {
     constructor(players) {
@@ -11,8 +7,29 @@ class Game {
         this.die1 = new Die();
         this.die2 = new Die();
     }
-    move(){
-        return this.die1.throw() + this.die2.throw();
+    checkPosition(position){
+        board.forEach((space, i) => {
+            if(space.id == position){
+                switch(space.type){
+                    case 'property': handleProperty();
+                    case 'luck-setback' : handleLuckSetback();
+                    case 'company' : handleCompany();
+                    case 'jail': handleJail();
+                    case 'visitJail': handleVisitJail();
+                    case 'free-park': handleFreePark();
+                    case 'start': handleStart();
+                    case 'profit': handleProfit();
+                    case 'tax': handleTax();
+                    default: return 'caiu no default';
+                }
+            }
+        })
+    }
+
+    turn(player){
+        player.move(player.rollDice());
+        this.checkPosition(player.position);
+        player.turn = false;
     }
 
     buyProperty(player, property) {

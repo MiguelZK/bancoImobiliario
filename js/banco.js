@@ -1,8 +1,6 @@
 
 
-throwDice = () => {
 
-}
 
 
 createPawn = () => { 
@@ -26,7 +24,8 @@ playGame = () => {
   const game = new Game(addPlayers());
   createPawn();
   // adicionar "board" de cada jogador
-
+  console.log(game);
+  
 }
 
 window.onload = function(){
