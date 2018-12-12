@@ -1,35 +1,50 @@
 
-    let board = [];
+    let board = [
+        new Property(1, 'leblon', 100, 6, 50, 3, 0, 50, 'pink'),
+        new Property(2, 'presidente vargas', 100, 6, 50, 3, 0, 50, 'pink'),
+        new Property(5, 'nossa senhora de copacabana', 100, 6, 50, 3, 0, 50, 'pink')
+    ];
+
+    
 
 class Game {
     constructor(players) {
-        this.players = players;
-        this.die1 = new Die();
-        this.die2 = new Die();
+        this.players = players
     }
+    verifyEndGame(players){
+        players.forEach(player => {
+            if(player.balance > 0){
+                return true;
+            }else{
+                return false;
+            }
+        });
+    }
+
+
+
     checkPosition(position){
-        board.forEach((space, i) => {
+        board.forEach((space) => {
             if(space.id == position){
-                switch(space.type){
-                    case 'property': handleProperty();
-                    case 'luck-setback' : handleLuckSetback();
-                    case 'company' : handleCompany();
-                    case 'jail': handleJail();
-                    case 'visitJail': handleVisitJail();
-                    case 'free-park': handleFreePark();
-                    case 'start': handleStart();
-                    case 'profit': handleProfit();
-                    case 'tax': handleTax();
-                    default: return 'caiu no default';
-                }
+                space.handleSpace();
             }
         })
     }
 
+
+
     turn(player){
-        player.move(player.rollDice());
+        player.move(5);
         this.checkPosition(player.position);
-        player.turn = false;
+    }
+
+    play(){
+        if(this.verifyEndGame()){
+            this.players.forEach(player => {
+                this.turn(player);
+            });
+            
+        }
     }
 
     buyProperty(player, property) {

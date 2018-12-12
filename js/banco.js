@@ -20,16 +20,20 @@ addPlayers = () => {
  return [p1, p2];
 }
 
-playGame = () => {
+startGame = () => {
   const game = new Game(addPlayers());
   createPawn();
   // adicionar "board" de cada jogador
-  console.log(game);
-  
+  return game;
+}
+
+playGame = (game) => {
+
 }
 
 window.onload = function(){
-$('.button').click(playGame);
+$('.button').click(startGame);
+playGame(startGame())
 }
 
 
