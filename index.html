@@ -12,11 +12,15 @@
 <body>
     <div class="board">
         <div class="center">
-                <input id="p1" type="text" placeholder="Player 1" />
-                <input id="p2" type="text" placeholder="Player 2" />
-                <button class="button">JOGAR</button>
+            <input id="p1" type="text" placeholder="Player 1" />
+            <input id="p2" type="text" placeholder="Player 2" />
+            <button class="play-button">JOGAR</button>
+            <div>
+                <button class="dice-button">Jogar dados</button>
+                <div class="dice-result"></div>
+            </div>
         </div>
-        <div class="corner start space">
+        <div id="0" class="corner start space">
             <div class="container">
                 <div class="box">
                     <div class="content col-bottom col-right">
@@ -92,7 +96,7 @@
                 </div>
             </div>
         </div>
-        <div class="corner visit-jail space">
+        <div id="10" class="corner visit-jail space">
             <div class="container">
                 <div class="box">
                     <div class="col">
@@ -180,59 +184,59 @@
             </div>
         </div>
         <div class="row horizontal-row bottom-row">
-            <div class="space property">
+            <div id="9" class="space property">
                 <div class="container">
                     <div class="top-bar blue"></div>
                     <p>Av. 9 de julho</p>
                     <p class="price"> Preço $220</p>
                 </div>
             </div>
-            <div class="space property">
+            <div id="8" class="space property">
                 <div class="container">
                     <div class="top-bar blue"></div>
                     <p>Av. Rebouças</p>
                     <p class="price"> Preço $220</p>
                 </div>
             </div>
-            <div class="space company">
+            <div id="7" class="space company">
                 <div class="container">
                     <p>companhia de viação</p>
                     <p class="price"> Preço $200</p>
                 </div>
             </div>
-            <div class="space property">
+            <div id="6" class="space property">
                 <div class="container">
                     <div class="top-bar blue"></div>
                     <p>Av. Brigadeiro Faria Lima</p>
                     <p class="price"> Preço $240</p>
                 </div>
             </div>
-            <div class="space company">
+            <div id="5" class="space company">
                 <div class="container">
                     <p>companhia ferroviária</p>
                     <p class="price"> Preço $200</p>
                 </div>
             </div>
-            <div class="space property">
+            <div id="4" class="space property">
                 <div class="container">
                     <div class="top-bar pink"></div>
                     <p>Av. Nossa S. de Copacabana</p>
                     <p class="price"> Preço $60</p>
                 </div>
             </div>
-            <div class="space property">
+            <div id="3" class="space property">
                 <div class="container">
                     <div class="top-bar pink"></div>
                     <p>Av. Presidente Vargas</p>
                     <p class="price"> Preço $60</p>
                 </div>
             </div>
-            <div class="space luck-setback">
+            <div id="2" class="space luck-setback">
                 <div class="container">
                     <p>Sorte / Reves</p>
                 </div>
             </div>
-            <div class="space property">
+            <div id="1" class="space property">
                 <div class="container">
                     <div class="top-bar pink"></div>
                     <p>Leblon</p>
@@ -319,7 +323,7 @@
     <script src="js/Player.js"></script>
     <script src="js/Game.js"></script>
     <script src="js/banco.js"></script>
-    
+
 </body>
 
 </html>

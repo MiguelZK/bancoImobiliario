@@ -28,10 +28,19 @@ class Player {
 
     move(diceResult){
         this.position+=diceResult;
+        if(this.position > 10){
+            this.position -= 11;
+        }
+        
     }
 
     rollDice(){
-        return (Math.floor(Math.random()*5)+1) + (Math.floor(Math.random()*5)+1);
+        const diceValue = (Math.floor(Math.random()*5)+1);
+        document.querySelector('.dice-result').innerHTML = `${diceValue} ${this.name}`;
+        return diceValue;
+        //+ (Math.floor(Math.random()*5)+1);
     }
+
+    
 }
 
