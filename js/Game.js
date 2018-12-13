@@ -1,28 +1,4 @@
 
-let board = [
-    new Start(0, 'start'),
-    new Property(1, 'leblon', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(2, 'presidente vargas', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(3, 'nossa senhora de copacabana', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(4, 'cahcorrinho', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(5, 'cadeia', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(6, 'picole', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(7, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(8, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(9, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(10, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(11, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(12, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(13, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(14, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(15, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(16, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(17, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(18, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(19, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(20, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-
-];
 
 class Game {
     constructor(players) {
@@ -30,21 +6,18 @@ class Game {
     }
 
 
-    verifyEndGame(players) {
-        if(players[0].balance < 1 || players[1].balance <1){
-            return false
-        }
-        return true;
+    
+    movePawn(player, spaceId){
+        const playerColor = $(`.p-${player.color}`);
+        $(playerColor).remove();
+        $(`#${spaceId}`).append(playerColor);
     }
-
 
 
     checkPosition(player) {
         board.forEach((space) => {
             if (space.id == player.position) {
-                const playerColor = $(`.p-${player.color}`);
-                $(playerColor).remove();
-                $(`#${space.id}`).append(playerColor);
+                this.movePawn(player, space.id);
                 space.handleSpace(player, this.players);
                
             }
@@ -58,8 +31,6 @@ class Game {
         
     }
 
-    
-
     buyCompany(player, company) {
         player.companies.push(company);
         player.pay(company.price);
@@ -68,6 +39,13 @@ class Game {
     buyHouse(player, property) {
         player.findProperty(property).totalHouse += 1;
         player.pay(property.housePrice);
+    }
+
+    verifyEndGame(players) {
+        if(players[0].balance < 1 || players[1].balance <1){
+            return false
+        }
+        return true;
     }
 
     // payRent(payer, renter, property) {

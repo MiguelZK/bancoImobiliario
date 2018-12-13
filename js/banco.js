@@ -1,5 +1,7 @@
 
-
+updateBalance = (player) => {
+  return $(`.${player.name}`).html(`${player.name} saldo: ${player.balance}`);
+}
 createPlayersWallet = (pName) =>{
 const pWallet= document.createElement('DIV');
 $(pWallet).addClass(`wallet ${pName}`);

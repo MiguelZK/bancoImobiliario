@@ -23,16 +23,14 @@ class Player {
         });
         return p;
     }
-    updateBalance() {
-        return $(`.${this.name}`).html(`${this.name} saldo: ${this.balance}`);
-    }
+    
     pay(value) {
         this.balance -= value;
-        this.updateBalance();
+        updateBalance(this);
     }
     receive(value) {
         this.balance += value;
-        this.updateBalance();
+        updateBalance(this);
     }
 
     move(diceResult){  
