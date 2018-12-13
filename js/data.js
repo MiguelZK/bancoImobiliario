@@ -1,31 +1,61 @@
+const luckSetback = [{
+        id: 1,
+        type: 'luck',
+        price: 100,
+        description: 'Ganhou na megasena'
+    },
+    {
+        id: 2,
+        type: 'setback',
+        price: 50,
+        description: 'Você está casando'
+    },
+    {
+        id: 3,
+        type: 'setback',
+        price: 150,
+        description: 'Comprou carrinho de cachorro quente'
+    },
+]
 
 const board = [
     new Start(0, 'start'),
-    new Property(1, 'leblon', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(2, 'presidente vargas', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(3, 'nossa senhora de copacabana', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(4, 'cahcorrinho', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(5, 'cadeia', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(6, 'picole', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(7, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(8, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(9, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(10, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(11, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(12, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(13, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(14, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(15, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(16, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(17, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(18, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(19, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
-    new Property(20, 'morumbi', 100, 6, 50, 3, 0, 50, 'pink'),
+    new Property(1, 'Leblon', 100, 6, 50, 50, 3, 0, 50, 'pink'),
+    new LuckSetback(2),
+    new Property(3, 'Av. Presidente Vargas', 60, 2, 50, 50, 2, 0, 50, 'pink'),
+    new Property(4, 'Av. Nossa Senhora de Copacabana', 60, 4, 50, 50, 2.2, 0, 30, 'pink'),
+    new Company(5, 'Companhia Ferroviaria', 200, 50),
+    new Property(6, 'Av. Brigadeiro Faria Lima', 240, 20, 150, 150, 4.3, 0, 120, 'blue'),
+    new Company(7, 'Companhia de Viação', 200, 50),
+    new Property(8, 'Av. Rebouças', 220, 18, 150, 150, 4, 0, 110, 'blue'),
+    new Property(9, 'Av. 9 de Julho', 220, 18, 150, 150, 4, 0, 110, 'blue'),
+    new VisitJail(10, 'Visit Jail'),
+    new Property(11, 'Av. Europa', 200, 16, 100, 100, 3.7, 0, 100, 'purple'),
+    new LuckSetback(12),
+    new Property(13, 'Augusta',180, 14, 100, 100, 3.5, 0, 90, 'purple'),
+    new Property(14, 'Pacaembu', 180, 14, 100, 100, 3.5,  0, 100, 'purple'),
+    new Company(15, 'Companhia de Táxi', 150, 40),
+    new LuckSetback(16),
+    new Property(17, 'Interlagos', 350, 35, 200, 200, 6, 0, 175,'orange'),
+    new Start(18, 'start'),
+    new Property(19, 'Morumbi', 400, 50, 200, 200, 6.5, 0, 200, 'orange'),
+    new FreeParking(20, 'Free Parking')
 
 ];
 
 
- 
+// {id: 12, 'FLAMENGO', 120, 8, 50, 50, 3.2, 0, 60, 'red'},
+// {id: 13, 'BOTAFOGO', 100, 6, 0, 50, 3, 0, 50, 'red'},
+// {id: 14, 'BRASIL', 160, 12, 100, 100, 3.5,  0, 80, 'yellow'},
+// {id: 15, 'PAULISTA', 140, 10, 100, 100, 3.2, 0, 70, 'yellow'},
+// {id: 16, 'JARDIM EUROPA', 140, 10, 100, 100, 3.2, 0, 70, 'yellow'},
+// {id: 17, 'COPACABANA', 260, 22, 150, 150, 4.5, 0, 130, 'green'},
+// {id: 18, 'VIEIRA SOUTO', 320, 28, 200, 200, 5.8, 0, 160, green'},
+// {id: 19, 'ATLÂNTICA', 300, 26, 200, 200, 5, 0, 150, 'green'},
+// {id: 20, 'IPANEMA', 300, 26, 200, 200, 5, 0, 150, 'green'},
+// {id: 21, 'JARDIM PAULISTA', 280, 24, 150, 150, 4.8, 0, 140, 'dark-blue'},
+// {id: 22, 'BROOKLIN', 260, 22, 150, 150, 4.5, 0, 130, 'dark-blue'},
+
 // const properties = [
 //     {id: 1, name: 'leblon', price:100, rent: 6, housePrice:50, houseHotel:50, 
 //     multiplier: 3, totalHouse: 0, mortgage:50, color:'pink'},
@@ -73,6 +103,3 @@ const board = [
 //     multiplier: 4.5, totalHouse: 0, mortgage:130, color:'dark-blue'},
 
 // ];
-
-
-

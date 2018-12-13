@@ -52,9 +52,6 @@ startGame = () => {
  
 }
 
-
-
-
 window.onload = function(){
 $('.play-button').click(startGame);
 }

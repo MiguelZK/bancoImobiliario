@@ -6,8 +6,6 @@ class Player {
             this.properties = [],
             this.companies = []
             this.position = 0;
-            this.turn = false;
-            this.round = 0;
     }
     finishRound(){
         this.balance+=200;
@@ -45,7 +43,6 @@ class Player {
         const diceValue = (Math.floor(Math.random()*5)+1);
         document.querySelector('.dice-result').innerHTML = `${diceValue} ${this.name}`;
         return diceValue;
-        //+ (Math.floor(Math.random()*5)+1);
     }
 
     

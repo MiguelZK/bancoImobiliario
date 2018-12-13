@@ -4,8 +4,6 @@ class Game {
     constructor(players) {
         this.players = players
     }
-
-
     
     movePawn(player, spaceId){
         const playerColor = $(`.p-${player.color}`);
@@ -29,16 +27,6 @@ class Game {
         player.move(player.rollDice());
         this.checkPosition(player);
         
-    }
-
-    buyCompany(player, company) {
-        player.companies.push(company);
-        player.pay(company.price);
-    }
-
-    buyHouse(player, property) {
-        player.findProperty(property).totalHouse += 1;
-        player.pay(property.housePrice);
     }
 
     verifyEndGame(players) {
