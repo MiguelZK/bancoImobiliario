@@ -7,6 +7,11 @@ class Player {
             this.companies = []
             this.position = 0;
             this.turn = false;
+            this.round = 0;
+    }
+    finishRound(){
+        this.balance+=200;
+        this.round+=1;
     }
 
     findProperty(property) {
@@ -18,20 +23,24 @@ class Player {
         });
         return p;
     }
-
+    updateBalance() {
+        return $(`.${this.name}`).html(`${this.name} saldo: ${this.balance}`);
+    }
     pay(value) {
         this.balance -= value;
+        this.updateBalance();
     }
     receive(value) {
         this.balance += value;
+        this.updateBalance();
     }
 
-    move(diceResult){
+    move(diceResult){  
         this.position+=diceResult;
         if(this.position > 10){
             this.position -= 11;
+            this.finishRound();
         }
-        
     }
 
     rollDice(){

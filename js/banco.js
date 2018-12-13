@@ -1,8 +1,8 @@
 
 
-createPlayersWallet = (n) =>{
+createPlayersWallet = (pName) =>{
 const pWallet= document.createElement('DIV');
-$(pWallet).addClass(`wallet player-${n}`);
+$(pWallet).addClass(`wallet ${pName}`);
 $('.center').append(pWallet);
 
 }
@@ -21,10 +21,10 @@ createGame = () => {
  const p2Name = $('#p2').val();
  const p1 = new Player(p1Name, 'green') ;
  const p2 = new Player(p2Name, 'blue');
- createPlayersWallet (1);
- createPlayersWallet (2);
- $('.player-1').html(`${p1Name} saldo: ${p1.balance}`)
- $('.player-2').html(`${p2Name} saldo: ${p2.balance}`)
+ createPlayersWallet (p1Name);
+ createPlayersWallet (p2Name);
+ $(`.${p1Name}`).html(`${p1Name} saldo: ${p1.balance}`)
+ $(`.${p2Name}`).html(`${p2Name} saldo: ${p2.balance}`)
  return new Game([p1,p2]);
 }
 
