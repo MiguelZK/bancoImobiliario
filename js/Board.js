@@ -4,6 +4,8 @@ class Space {
             this.name = name
     }
 
+
+
     payRent(payer, renter, rent) {
         renter.receive(rent);
         payer.pay(rent);
@@ -11,13 +13,17 @@ class Space {
     }
 
     buy(player, type) {
-        if(type == 'property'){
-            player.properties.push(this);
-        }else if(type == 'company'){
+        if (type == 'property') {
+            player.properties.push(this)
+            updatePlayersProperty(player);
+        } else if (type == 'company') {
             player.companies.push(this);
+            console.log(player.companies);
+            updatePlayersCompany(player);
         }
         player.pay(this.price);
         this.owner = player.name;
+        
     }
 }
 
@@ -36,27 +42,46 @@ class Property extends Space {
         this.owner = '';
     }
 
+    hasHouse() {
+        return this.totalHouse > 0;
+    }
 
+    getFinalRent() {
+        const th = this.totalHouse;
+        const r = this.rent;
+        const m = this.multiplier;
+        return (r + (10 * m)) * th;
+    }
+
+    buyHouse(player){
+        player.pay(this.housePrice);
+        this.totalHouse+=1;
+    }
 
     handleSpace(player, players) {
         if (this.owner == '') {
             setTimeout(() => {
                 if (confirm(`Você quer comprar ${this.name}?`)) {
-                    this.buy(player);
+                    this.buy(player, 'property');
                 }
             }, 100);
         } else if (this.owner == player.name) {
-            console.log('comprar casa?');
+            if (confirm(`Você quer comprar uma casa em ${this.name}?`)) {
+                this.buyHouse(player);
+            }
         } else {
+            let finalRent = this.rent;
+            if (this.hasHouse()) {
+                finalRent = this.getFinalRent();
+                console.log(finalRent);
+            }
             players.forEach(owner => {
                 if (this.owner == owner.name) {
-                    const finalRent = this.rent;
                     this.payRent(player, owner, finalRent);
                 }
             });
         }
-
-
+        
     }
 }
 
@@ -69,17 +94,17 @@ class Company extends Space {
     }
 
     handleSpace(player, players) {
-        if(this.owner == ''){
+        if (this.owner == '') {
             setTimeout(() => {
-                if(confirm(`Você quer comprar ${this.name}?`)){
-                    this.buy(player);
+                if (confirm(`Você quer comprar ${this.name}?`)) {
+                    this.buy(player, 'company');
                 }
             }, 100);
-        }else if (this.owner == player.name) {
+        } else if (this.owner == player.name) {
             console.log('Essa é sua companhia');
-        }else{
+        } else {
             players.forEach(owner => {
-                if(this.owner == owner.name){
+                if (this.owner == owner.name) {
                     const finalRent = this.rent * player.rollDice();
                     this.payRent(player, owner, finalRent);
                 }
@@ -88,32 +113,32 @@ class Company extends Space {
     }
 }
 
-class LuckSetback extends Space{
-    constructor(id){
+class LuckSetback extends Space {
+    constructor(id) {
         super(id);
         this.cards = luckSetback;
     }
-    pickCard(){
-        const randomCard = (Math.floor(Math.random()*this.cards.length)+1);
+    pickCard() {
+        const randomCard = (Math.floor(Math.random() * this.cards.length) + 1);
         let pickedCard;
         this.cards.forEach(card => {
-            if(card.id == randomCard){
-                pickedCard =  card;
+            if (card.id == randomCard) {
+                pickedCard = card;
             }
         })
         return pickedCard;
- 
+
     }
     handleSpace(player) {
-       const card =  this.pickCard();
-       if(card.type == 'setback'){
-        console.log(`${card.description} pague ${card.price}`)
-        player.pay(card.price);
-       }else{
-        console.log(`${card.description} receba ${card.price}`);
-        player.receive(card.price);
-       }
-        
+        const card = this.pickCard();
+        if (card.type == 'setback') {
+            console.log(`${card.description} pague ${card.price}`)
+            player.pay(card.price);
+        } else {
+            console.log(`${card.description} receba ${card.price}`);
+            player.receive(card.price);
+        }
+
     }
 }
 
@@ -128,17 +153,17 @@ class Start extends Space {
     }
 }
 
-class VisitJail extends Space{
+class VisitJail extends Space {
     constructor(id, name) {
         super(id, name);
     }
-    handleSpace() {}
+    handleSpace() { }
 
 }
 
-class FreeParking extends Space{
+class FreeParking extends Space {
     constructor(id, name) {
         super(id, name);
     }
-    handleSpace() {}
+    handleSpace() { }
 }

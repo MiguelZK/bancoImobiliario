@@ -8,7 +8,7 @@ class Game {
     movePawn(player, spaceId){
         const playerColor = $(`.p-${player.color}`);
         $(playerColor).remove();
-        $(`#${spaceId}`).append(playerColor);
+        $(`#${spaceId} .container`).append(playerColor);
     }
 
 
@@ -17,7 +17,6 @@ class Game {
             if (space.id == player.position) {
                 this.movePawn(player, space.id);
                 space.handleSpace(player, this.players);
-               
             }
         })
 

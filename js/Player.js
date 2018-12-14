@@ -33,8 +33,8 @@ class Player {
 
     move(diceResult){  
         this.position+=diceResult;
-        if(this.position > 10){
-            this.position -= 11;
+        if(this.position > 20){
+            this.position -= 21;
             this.finishRound();
         }
     }

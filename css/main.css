@@ -11,6 +11,9 @@ h1,h2,h3,h4,h5.h6{
 	margin:0;
 }
 .board{
+
+}
+.table{
     display: grid;
 	grid-template-columns: 125px repeat(9, 80px) 125px;
 	grid-template-rows: 125px repeat(9, 80px) 125px;
@@ -216,17 +219,44 @@ p{
 }
 
 .pawn{
-	width: 35px;
-	height: 35px;
+	width: 25px;
+	height: 25px;
 	border-radius: 35px;
 	display: inline-block;
 	margin: 5px;
+	
 }
 .p-green{
 	background-color: #074210;
+	position: absolute;
+	top: 35%;
+	left: 35%;
 }
 .p-blue{
 	background-color: blue;
+	position: absolute;
+	top: 15%;
+	left: 15%;
+}
+
+.wrapper{
+
+	display: flex;
+	margin:20px;
+}
+.balance{
+	text-align: center;
+}
+
+.purchase{
+	width: 50%;
+	height: 500px;
+}
+.player1{
+	background:red;
+}
+.player2{
+	background:green;
 }
 
 .board{
