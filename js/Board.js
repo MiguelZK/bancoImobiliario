@@ -9,7 +9,6 @@ class Space {
     payRent(payer, renter, rent) {
         renter.receive(rent);
         payer.pay(rent);
-        console.log(`${payer.name} pagou ${rent} para ${renter.name}`);
     }
 
     buy(player, type) {
@@ -18,7 +17,6 @@ class Space {
             updatePlayersProperty(player);
         } else if (type == 'company') {
             player.companies.push(this);
-            console.log(player.companies);
             updatePlayersCompany(player);
         }
         player.pay(this.price);
@@ -149,7 +147,7 @@ class Start extends Space {
     }
 
     handleSpace(player) {
-        player.receive(200);
+       
     }
 }
 
@@ -166,4 +164,14 @@ class FreeParking extends Space {
         super(id, name);
     }
     handleSpace() { }
+}
+
+class Tax extends Space {
+    constructor(id, name) {
+        super(id, name);
+    }
+    handleSpace(player) { 
+        player.pay(200);
+    }
+
 }

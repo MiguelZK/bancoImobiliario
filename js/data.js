@@ -1,21 +1,57 @@
 const luckSetback = [{
-        id: 1,
-        type: 'luck',
-        price: 100,
-        description: 'Ganhou na megasena'
-    },
-    {
-        id: 2,
-        type: 'setback',
-        price: 50,
-        description: 'Você está casando'
-    },
-    {
-        id: 3,
-        type: 'setback',
-        price: 150,
-        description: 'Comprou carrinho de cachorro quente'
-    },
+    id: 1,
+    type: 'luck',
+    price: 100,
+    description: 'O seu cachorro policial tirou o 1º prêmio na exposição do Kennel Club'
+},
+{
+    id: 2,
+    type: 'setback',
+    price: 100,
+    description: 'Parabéns! Você convidou seus amigos para festejar o aniversário'
+},
+{
+    id: 3,
+    type: 'setback',
+    price: 100,
+    description: 'Você é papai outra vez! Despesas de maternidade'
+},
+{
+    id: 4,
+    type: 'luck',
+    price: 45,
+    description: 'Você saiu de férias e se hospedou na casa de um amigo. Você economizou o hotel'
+},
+{
+    id: 5,
+    type: 'luck',
+    price: 45,
+    description: 'Você saiu de férias e se hospedou na casa de um amigo. Você economizou o hotel'
+},
+{
+    id: 6,
+    type: 'luck',
+    price: 200,
+    description: 'Você está com sorte. Suas ações na Bolsa de Valores estão em alta'
+},
+{
+    id: 7,
+    type: 'setback',
+    price: 45,
+    description: 'Seus parentes do interior vieram passar umas "férias" na sua casa'
+},
+{
+    id: 8,
+    type: 'luck',
+    price: 150,
+    description: 'Seus parentes do interior vieram passar umas "férias" na sua casa'
+},
+{
+    id: 9,
+    type: 'luck',
+    price: 150,
+    description: 'Inesperadamente você recebeu uma herança que já estava esquecida'
+}
 ]
 
 const board = [
@@ -32,11 +68,11 @@ const board = [
     new VisitJail(10, 'Visit Jail'),
     new Property(11, 'Av. Europa', 200, 16, 100, 100, 3.7, 0, 100, 'purple'),
     new LuckSetback(12),
-    new Property(13, 'Augusta',180, 14, 100, 100, 3.5, 0, 90, 'purple'),
-    new Property(14, 'Pacaembu', 180, 14, 100, 100, 3.5,  0, 100, 'purple'),
+    new Property(13, 'Augusta', 180, 14, 100, 100, 3.5, 0, 90, 'purple'),
+    new Property(14, 'Pacaembu', 180, 14, 100, 100, 3.5, 0, 100, 'purple'),
     new Company(15, 'Companhia de Táxi', 150, 40),
     new LuckSetback(16),
-    new Property(17, 'Interlagos', 350, 35, 200, 200, 6, 0, 175,'orange'),
+    new Property(17, 'Interlagos', 350, 35, 200, 200, 6, 0, 175, 'orange'),
     new Start(18, 'start'),
     new Property(19, 'Morumbi', 400, 50, 200, 200, 6.5, 0, 200, 'orange'),
     new FreeParking(20, 'Free Parking')

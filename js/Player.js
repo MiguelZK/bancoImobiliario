@@ -8,18 +8,8 @@ class Player {
             this.position = 0;
     }
     finishRound(){
-        this.balance+=200;
+        this.receive(200);
         this.round+=1;
-    }
-
-    findProperty(property) {
-        let p;
-        this.properties.forEach(a => {
-            if (a === property) {
-                p = a;
-            }
-        });
-        return p;
     }
     
     pay(value) {
@@ -34,8 +24,8 @@ class Player {
     move(diceResult){  
         this.position+=diceResult;
         if(this.position > 20){
-            this.position -= 21;
             this.finishRound();
+            this.position -= 21;
         }
     }
 
