@@ -1,14 +1,20 @@
+class Die{
+    constructor(){
+      this.die1 = this.roll();
+      this.die2 = this.roll();
+    }
+    roll(){
+        return (Math.floor(Math.random() * 6) + 1);
+    } 
 
+    result(){
+        return this.die1+this.die2;
+    }
+}
 
 class Game {
     constructor(players) {
         this.players = players
-    }
-    
-    movePawn(player, spaceId){
-        const playerColor = $(`.p-${player.color}`);
-        $(playerColor).remove();
-        $(`#${spaceId} .container`).append(playerColor);
     }
 
 
@@ -16,10 +22,9 @@ class Game {
         board.forEach((space) => {
             if (space.id == player.position) {
 
-                this.movePawn(player, space.id);
-                
+                movePawn(player, space.id);
                 setTimeout(() => {
-                 space.handleSpace(player, this.players)
+                    space.handleSpace(player, this.players)
                 }, 100)
             }
         })
@@ -27,13 +32,17 @@ class Game {
     }
 
     turn(player) {
-        player.move(player.rollDice());
+        const dice = new Die();
+        const diceResult = dice.result();
+        const diceRoll = [dice.die1, dice.die2];
+        document.querySelector('.dice-result').innerHTML = `${diceResult} ${player.name}`;
+        //player.move(diceResult);
         this.checkPosition(player);
-        
+
     }
 
     verifyEndGame(players) {
-        if(players[0].balance < 1 || players[1].balance <1){
+        if (players[0].balance < 1 || players[1].balance < 1) {
             return false
         }
         return true;

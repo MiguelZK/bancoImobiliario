@@ -1,4 +1,10 @@
 
+  movePawn = (player, spaceId) => {
+    const playerColor = $(`.p-${player.color}`);
+    $(playerColor).remove();
+    $(`#${spaceId} .container`).append(playerColor);
+}
+
 updateBalance = (player) => {
   const balancePlayer = $(`.${player.name}`);
   return $(balancePlayer).html(`${player.name} saldo: ${player.balance}`);

@@ -77,11 +77,11 @@ class Property extends Space {
     }
 
     buyHouse(player) {
-       if(player.hasMoney(this.housePrice)){
-        player.pay(this.housePrice);
-        createHouse(this)
-        this.totalHouse += 1;
-       }
+        if (player.hasMoney(this.housePrice)) {
+            player.pay(this.housePrice);
+            createHouse(this)
+            this.totalHouse += 1;
+        }
     }
 
 
@@ -209,6 +209,7 @@ class Tax extends Space {
         super(id, name);
     }
     handleSpace(player) {
+        alert('Pague 200 de Impostos');
         player.pay(200);
     }
 
@@ -218,7 +219,18 @@ class Jail extends Space {
     constructor(id, name) {
         super(id, name);
     }
-    handleSpace(player) {
 
+    moveToJail(player) {
+        player.position = 10;
+        movePawn(player, 10)
+    }
+
+    getOutJail(player, dice){
+
+    }
+
+    handleSpace(player) {
+        player.arrested = true;
+        this.moveToJail(player);
     }
 }

@@ -6,6 +6,7 @@ class Player {
             this.properties = [],
             this.companies = [],
             this.position = 0
+            this.arrested = false;
     }
 
     hasMoney(value) {
