@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Document</title>
 </head>
@@ -13,8 +14,8 @@
     <div class="board">
         <div class="table">
             <div class="center">
-                <input id="p1" type="text" placeholder="Player 1" />
-                <input id="p2" type="text" placeholder="Player 2" />
+                <input id="p1" type="text" placeholder="Player 1" value='mari' />
+                <input id="p2" type="text" placeholder="Player 2" value='joao'/>
                 <button class="play-button">JOGAR</button>
                 <div>
                     <button class="dice-button">Jogar dados</button>
@@ -49,57 +50,57 @@
                 </div>
             </div>
             <div class="row horizontal-row top-row">
-                <div class="space property">
+                <div id="21" class="space property">
                     <div class="container">
                         <div class="top-bar red"></div>
                         <p>Flamengo</p>
                         <p class="price"> Preço $120</p>
                     </div>
                 </div>
-                <div class="space luck-setback">
+                <div id="22" class="space luck-setback">
                     <div class="container">
                         <p>Sorte / Reves</p>
                     </div>
                 </div>
-                <div class="space property">
+                <div id="23" class="space property">
                     <div class="container">
                         <div class="top-bar red"></div>
                         <p>Botafogo</p>
                         <p class="price"> Preço $100</p>
                     </div>
                 </div>
-                <div id="tax" class="space">
+                <div id="24" class="space tax">
                     <div class="container">
                         <p>Imposto de Renda</p>
                         <p class="price"> Pague $200</p>
                     </div>
                 </div>
-                <div class="space company">
+                <div id="25" class="space company">
                     <div class="container">
                         <p>Companhia de Navegação</p>
                         <p class="price"> Preço $150</p>
                     </div>
                 </div>
-                <div class="space property">
+                <div id="26" class="space property">
                     <div class="container">
                         <div class="top-bar yellow"></div>
                         <p>Av. Brasil</p>
                         <p class="price"> Preço $160</p>
                     </div>
                 </div>
-                <div class="space luck-setback">
+                <div id="27" class="space luck-setback">
                     <div class="container">
                         <p>sorte/reves</p>
                     </div>
                 </div>
-                <div class="space property">
+                <div id="28" class="space property">
                     <div class="container">
                         <div class="top-bar yellow"></div>
                         <p>Av. Paulista</p>
                         <p class="price"> Preço $140</p>
                     </div>
                 </div>
-                <div class="space property">
+                <div id="29" class="space property">
                     <div class="container">
                         <div class="top-bar yellow"></div>
                         <p>Jardim Europa</p>
@@ -122,60 +123,60 @@
                     </div>
                 </div>
             </div>
-            <div class="row vertical-row rigth-row">
-                <div class="space property">
+            <div  class="row vertical-row rigth-row">
+                <div id="31" class="space property">
                     <div class="container">
                         <div class="top-bar green"></div>
                         <p>Copacabana</p>
                         <p class="price"> Preço $260</p>
                     </div>
                 </div>
-                <div class="space company">
+                <div id="32" class="space company">
                     <div class="container">
                         <p>Companhia de Aviação</p>
                         <p class="price"> Preço $200</p>
                     </div>
                 </div>
-                <div class="space property">
+                <div id="33" class="space property">
                     <div class="container">
                         <div class="top-bar green"></div>
                         <p>Av. Vieira Souto</p>
                         <p class="price"> Preço $320</p>
                     </div>
                 </div>
-                <div class="space property">
+                <div id="34" class="space property">
                     <div class="container">
                         <div class="top-bar green"></div>
                         <p>Av. Atlântica</p>
                         <p class="price"> Preço $300</p>
                     </div>
                 </div>
-                <div class="space company">
+                <div id="35" class="space company">
                     <div class="container">
                         <p>Companhia de Táxi Aéreo</p>
                         <p class="price"> Preço $200</p>
                     </div>
                 </div>
-                <div class="space property">
+                <div id="36" class="space property">
                     <div class="container">
                         <div class="top-bar green"></div>
                         <p>Ipanema</p>
                         <p class="price"> Preço $300</p>
                     </div>
                 </div>
-                <div class="space luck-setback">
+                <div id="37" class="space luck-setback">
                     <div class="container">
                         <p>sorte/reves</p>
                     </div>
                 </div>
-                <div class="space property">
+                <div id="38" class="space property">
                     <div class="container">
                         <div class="top-bar dark-blue"></div>
                         <p>Jardim Paulista</p>
                         <p class="price"> Preço $280</p>
                     </div>
                 </div>
-                <div class="space property">
+                <div id="39" class="space property">
                     <div class="container">
                         <div class="top-bar dark-blue"></div>
                         <p>Brooklin</p>
@@ -255,7 +256,7 @@
                     </div>
                 </div>
             </div>
-            <div class="corner go-jail space">
+            <div id="30" class="corner go-jail space">
                 <div class="container">
                     <div class="col"></div>
                     <div class="box">

@@ -259,6 +259,10 @@ p{
 	background:green;
 }
 
+.fa-home:before {
+	margin-left: 10px;
+}
+
 .board{
 	/* transform: rotate(180deg); */
 }

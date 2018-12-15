@@ -15,8 +15,12 @@ class Game {
     checkPosition(player) {
         board.forEach((space) => {
             if (space.id == player.position) {
+
                 this.movePawn(player, space.id);
-                space.handleSpace(player, this.players);
+                
+                setTimeout(() => {
+                 space.handleSpace(player, this.players)
+                }, 100)
             }
         })
 

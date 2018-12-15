@@ -4,21 +4,25 @@ updateBalance = (player) => {
   return $(balancePlayer).html(`${player.name} saldo: ${player.balance}`);
 }
 
-updatePlayersProperty = (player) => {
+updatePlayersList = (player, type) => {
   const list = $(`.purchase.${player.color} > ul`);
-  const properties = player.properties;
+  let arr = [];
+  if(type == 'property'){
+    arr = player.properties;
+  }else{
+    arr = player.companies;
+  }
   const item = createPurchaseItem();
-  item.html(properties[properties.length -1].name);
+  item.html(arr[arr.length -1].name);
   $(list).append(item);
 }
 
-updatePlayersCompany = (player) => {
-  const list = $(`.purchase.${player.color} > ul`);
-  const companies = player.companies;
-  console.log(companies);
-  const item = createPurchaseItem();
-  item.html(companies[companies.length -1].name);
-  $(list).append(item);
+createHouse = (property) => {
+  const liProperty = $(`li:contains(${property.name})`);
+  const house = document.createElement('I');
+  $(house).addClass('fas fa-home');
+  $(liProperty).append(house);
+  console.log(house);
 }
 
 createPurchaseItem = () => {
