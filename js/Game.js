@@ -1,14 +1,14 @@
-class Die{
-    constructor(){
-      this.die1 = this.roll();
-      this.die2 = this.roll();
+class Die {
+    constructor() {
+        this.die1 = this.roll();
+        this.die2 = this.roll();
     }
-    roll(){
+    roll() {
         return (Math.floor(Math.random() * 6) + 1);
-    } 
+    }
 
-    result(){
-        return this.die1+this.die2;
+    result() {
+        return this.die1 + this.die2;
     }
 }
 
@@ -18,7 +18,7 @@ class Game {
     }
 
 
-    checkPosition(player,diceresult) {
+    checkPosition(player, diceresult) {
         board.forEach((space) => {
             if (space.id == player.position) {
                 movePawn(player, space.id);
@@ -31,42 +31,62 @@ class Game {
 
     }
 
-    diceImg(dice){
+    diceImg(dice) {
         let arr = [];
-        dice.forEach((die)=>{
-            switch(die){
-                case 1 : arr.push('&#9856;');
-                break;
+        dice.forEach((die) => {
+            switch (die) {
+                case 1: arr.push('&#9856;');
+                    break;
                 case 2: arr.push('&#9857;');
-                break;
+                    break;
                 case 3: arr.push('&#9858;');
-                break;
+                    break;
                 case 4: arr.push('&#9859;');
-                break;
+                    break;
                 case 5: arr.push('&#9860;');
-                break;
+                    break;
                 case 6: arr.push('&#9861;');
             }
         })
         return arr;
     }
-
-    handleDice(){
-        const dice = new Die();
-        const diceResult = dice.result();
-        const diceRoll = [dice.die1, dice.die2];
-        const drawedDice = this.diceImg(diceRoll);
-        drawedDice.forEach((drawedDie, i)=>{
-            document.querySelector(`.dice${i+1}`).innerHTML = `${drawedDie}`;
-        })
-        return diceResult;
+    diceResult(dice) {
+        dice.result();
     }
 
-    turn(player) {
-        $('.dice-result > .die__player').html(`${player.name} tirou`);
-        const diceresult =this.handleDice();
+    drawDice(dice) {
+        const diceRoll = [dice.die1, dice.die2];
+        this.diceImg(diceRoll).forEach((drawedDie, i) => {
+            document.querySelector(`.dice${i + 1}`).innerHTML = `${drawedDie}`;
+        })
+    }
+
+
+    go(player, diceresult) {
         player.move(diceresult);
         this.checkPosition(player, diceresult);
+    }
+    turn(player) {
+        $('.dice-result > .die__space').html('');
+        const dice = new Die();
+        const diceresult = dice.result();
+        $('.dice-result > .die__player').html(`${player.name} tirou`);
+        this.drawDice(dice);
+        console.log(player.arrested);
+        if (!player.arrested) {
+            this.go(player, diceresult);
+        } else {
+            player.turnArrested += 1;
+            $('.dice-result > .die__space').html('voce está na prisão');
+            if (player.turnArrested == 3) {
+                this.go(player, this.diceResult(dice));
+            }else if(dice.die1 === dice.die2){
+                console.log('dado igual');
+                this.go(player, diceresult);
+                player.arrested = false;
+            }
+        }
+
 
     }
 

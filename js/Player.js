@@ -7,6 +7,7 @@ class Player {
             this.companies = [],
             this.position = 0
             this.arrested = false;
+            this.turnArrested = 0;
     }
 
     hasMoney(value) {

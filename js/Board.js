@@ -238,10 +238,12 @@ class Jail extends Space {
     }
 
     getOutJail(player, dice){
-
+        if(dice[0]==dice[1]){
+            player.arrested = false;
+        }
     }
 
-    handleSpace(player) {
+    handleSpace(player, players, dice) {
         player.arrested = true;
         this.moveToJail(player);
     }
