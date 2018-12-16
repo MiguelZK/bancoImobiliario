@@ -18,8 +18,10 @@ updatePlayersList = (player, type) => {
   }else{
     arr = player.companies;
   }
+  const space =arr[arr.length -1];
   const item = createPurchaseItem();
-  item.html(arr[arr.length -1].name);
+  item.addClass(space.color);
+  item.html(space.name);
   $(list).append(item);
 }
 
@@ -66,7 +68,12 @@ createGame = () => {
 startGame = () => {
   const game = createGame();
   const players = game.players;
+  $('.play').show(600);
+  $('.wrapper').show(600);
   createPawn();
+  $('.start-game').hide(600);
+  $('.start-game').remove();
+
   let turn = true;
   $('.dice-button').click(() => {
     if (game.verifyEndGame(players)) {
@@ -85,48 +92,8 @@ startGame = () => {
 }
 
 window.onload = function () {
+  $('.play').hide();
+  $('.wrapper').hide();
   $('.play-button').click(startGame);
 }
 
-
-
-// createPlayersPurchases(p1.color);
-//   createPlayersPurchases(p2.color);
-//   $(`.${p1Name}`).html(`${p1Name} saldo: ${p1.balance}`)
-//   $(`.${p2Name}`).html(`${p2Name} saldo: ${p2.balance}`)
-//   createListProperties(p1.color);
-//   createListProperties(p2.color);
-
-// createItemsProperties = (player) => {
-//   if(player.properties != 0){
-//     player.properties.forEach(prop => {
-//       const item = document.createElement('LI');
-//       $(item).addClass('item__properties');
-//       $(item).html(prop.name);
-//       $(list).append(item);
-//     });
-//   }
-// }
-// createListProperties = (player) =>{
-//   const list = document.createElement('UL');
-//     $(list).addClass('items__properties');
-//     setTimeout(() =>{
-//       $(`.${player.name}`).append(list);
-//       createItemsProperties(player);
-//     }, 1000);
-
-// }
-
-// createPlayersWallet = (pName, pColor) =>{
-//   const pWallet= document.createElement('DIV');
-//   $(pWallet).addClass(`wallet ${pName}`);
-//   $(`.${pColor}`).append(pWallet);
-
-//   }
-
-// createPlayersPurchases = (pName) => {
-//   const purchases = document.createElement('DIV');
-//   $(purchases).addClass(`purchase ${pName}`);
-//   $(`.wrapper`).append(purchases);
-//   createPlayersWallet(pName, pColor)
-// }

@@ -122,10 +122,11 @@ class Company extends Space {
         super(id, name),
             this.price = price,
             this.rent = rent,
-            this.owner = ''
+            this.owner = '',
+            this.color = 'grey'
     }
 
-    handleSpace(player, players) {
+    handleSpace(player, players, diceresult) {
         if (this.owner == '') {
 
             if (this.confirmAction('new')) {
@@ -140,7 +141,7 @@ class Company extends Space {
 
             players.forEach(owner => {
                 if (this.owner == owner.name) {
-                    const finalRent = this.rent * player.rollDice();
+                    const finalRent = this.rent * diceresult;
                     this.payRent(player, owner, finalRent);
                 }
             });
@@ -153,6 +154,7 @@ class LuckSetback extends Space {
     constructor(id) {
         super(id);
         this.cards = luckSetback;
+        this.name= 'sorte ou revés'
     }
     pickCard() {
         const randomCard = (Math.floor(Math.random() * this.cards.length) + 1);
@@ -202,6 +204,16 @@ class FreeParking extends Space {
         super(id, name);
     }
     handleSpace() {}
+}
+
+class Profit extends Space{
+    constructor(id, name) {
+        super(id, name);
+    }
+    handleSpace(player) {
+        alert('Receba 200 de Lucro');
+        player.receive(200);
+    }
 }
 
 class Tax extends Space {

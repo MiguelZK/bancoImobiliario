@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Document</title>
 </head>
@@ -14,12 +15,19 @@
     <div class="board">
         <div class="table">
             <div class="center">
-                <input id="p1" type="text" placeholder="Player 1" value='mari' />
-                <input id="p2" type="text" placeholder="Player 2" value='joao'/>
-                <button class="play-button">JOGAR</button>
-                <div>
-                    <button class="dice-button">Jogar dados</button>
-                    <div class="dice-result"></div>
+                <div class="start-game">
+                    <input id="p1" class="player-name" type="text" placeholder="Player 1" value='mari' />
+                    <input id="p2" class="player-name" type="text" placeholder="Player 2" value='joao' />
+                    <button class="btn play-button">JOGAR</button>
+                </div>
+                <div class="play">
+                    <button class="btn dice-button">Jogar dados</button>
+                    <div class="dice-result">
+                        <p class="die__player"></p>
+                        <div class="dice dice1">&#9856;</div>
+                        <div class="dice dice2">&#9856;</div>
+                        <p class="die__space"></p>
+                    </div>
                 </div>
                 <div class="wrapper">
                     <div class="purchase">
@@ -123,7 +131,7 @@
                     </div>
                 </div>
             </div>
-            <div  class="row vertical-row rigth-row">
+            <div class="row vertical-row rigth-row">
                 <div id="31" class="space property">
                     <div class="container">
                         <div class="top-bar green"></div>

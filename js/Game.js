@@ -18,26 +18,55 @@ class Game {
     }
 
 
-    checkPosition(player) {
+    checkPosition(player,diceresult) {
         board.forEach((space) => {
             if (space.id == player.position) {
-
                 movePawn(player, space.id);
+                $('.dice-result > .die__space').html(`e caiu em ${space.name}`);
                 setTimeout(() => {
-                    space.handleSpace(player, this.players)
+                    space.handleSpace(player, this.players, diceresult)
                 }, 100)
             }
         })
 
     }
 
-    turn(player) {
+    diceImg(dice){
+        let arr = [];
+        dice.forEach((die)=>{
+            switch(die){
+                case 1 : arr.push('&#9856;');
+                break;
+                case 2: arr.push('&#9857;');
+                break;
+                case 3: arr.push('&#9858;');
+                break;
+                case 4: arr.push('&#9859;');
+                break;
+                case 5: arr.push('&#9860;');
+                break;
+                case 6: arr.push('&#9861;');
+            }
+        })
+        return arr;
+    }
+
+    handleDice(){
         const dice = new Die();
         const diceResult = dice.result();
         const diceRoll = [dice.die1, dice.die2];
-        document.querySelector('.dice-result').innerHTML = `${diceResult} ${player.name}`;
-        player.move(diceResult);
-        this.checkPosition(player);
+        const drawedDice = this.diceImg(diceRoll);
+        drawedDice.forEach((drawedDie, i)=>{
+            document.querySelector(`.dice${i+1}`).innerHTML = `${drawedDie}`;
+        })
+        return diceResult;
+    }
+
+    turn(player) {
+        $('.dice-result > .die__player').html(`${player.name} tirou`);
+        const diceresult =this.handleDice();
+        player.move(diceresult);
+        this.checkPosition(player, diceresult);
 
     }
 
@@ -47,18 +76,4 @@ class Game {
         }
         return true;
     }
-
-    // payRent(payer, renter, property) {
-    //     const th = property.totalHouse;
-    //     const r = property.rent;
-    //     const m = property.multiplier;
-    //     if (property.totalHouse > 0) {
-    //         const value = (r + (10 * m)) * th;
-    //         renter.receive(value);
-    //         payer.pay(value)
-    //     } else {
-    //         renter.receive(r);
-    //         payer.pay(r);
-    //     }
-    // }
 }
