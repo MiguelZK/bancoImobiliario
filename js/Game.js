@@ -36,7 +36,7 @@ class Game {
         const diceResult = dice.result();
         const diceRoll = [dice.die1, dice.die2];
         document.querySelector('.dice-result').innerHTML = `${diceResult} ${player.name}`;
-        //player.move(diceResult);
+        player.move(diceResult);
         this.checkPosition(player);
 
     }
