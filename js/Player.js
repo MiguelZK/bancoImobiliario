@@ -6,8 +6,8 @@ class Player {
             this.properties = [],
             this.companies = [],
             this.position = 0
-            this.arrested = false;
-            this.turnArrested = 0;
+        this.arrested = false;
+        this.turnArrested = 0;
     }
 
     hasMoney(value) {
@@ -31,10 +31,11 @@ class Player {
 
     move(diceResult) {
         this.position += diceResult;
-        if (this.position > 40) {
-            this.finishRound();
-            this.position -= 41;
-        }
+            if (this.position > 40) {
+                this.finishRound();
+                this.position -= 41;
+            }
+            // $('.dice-result > .die__space').html(`e caiu em ${board[this.position].name}`);
     }
 
     rollDice() {

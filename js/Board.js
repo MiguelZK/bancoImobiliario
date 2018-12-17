@@ -151,10 +151,9 @@ class Company extends Space {
 }
 
 class LuckSetback extends Space {
-    constructor(id) {
-        super(id);
+    constructor(id, name) {
+        super(id, name);
         this.cards = luckSetback;
-        this.name= 'sorte ou revés'
     }
     pickCard() {
         const randomCard = (Math.floor(Math.random() * this.cards.length) + 1);
@@ -186,7 +185,7 @@ class Start extends Space {
         super(id, name);
     }
 
-    handleSpace(player) {
+    handleSpace() {
 
     }
 }

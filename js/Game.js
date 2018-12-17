@@ -19,6 +19,9 @@ class Game {
 
 
     checkPosition(player, diceresult) {
+        // const position = player.position;
+        // movePawn(player, position);
+        // board[position].handleSpace(player, this.players, diceresult)
         board.forEach((space) => {
             if (space.id == player.position) {
                 movePawn(player, space.id);
@@ -73,14 +76,18 @@ class Game {
         $('.dice-result > .die__player').html(`${player.name} tirou`);
         this.drawDice(dice);
         console.log(player.arrested);
-        if (!player.arrested) {
+        if (player.arrested === false) {
             this.go(player, diceresult);
         } else {
+            console.log('to aqui');
             player.turnArrested += 1;
             $('.dice-result > .die__space').html('voce está na prisão');
             if (player.turnArrested == 3) {
+                player.arrested = false;
+                player.turnArrested = 0;
                 this.go(player, this.diceResult(dice));
-            }else if(dice.die1 === dice.die2){
+            }else 
+            if(dice.die1 === dice.die2){
                 console.log('dado igual');
                 this.go(player, diceresult);
                 player.arrested = false;
