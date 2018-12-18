@@ -26,7 +26,7 @@ class Space {
     payRent(payer, renter, rent) {
         renter.receive(rent);
         payer.pay(rent);
-        alert(`Você caiu na casa de ${renter.name} pague ${rent}`);
+        alert(`Você caiu na casa de ${(renter.name)} pague ${rent}`);
     }
 
     buy(player, type) {
@@ -43,142 +43,6 @@ class Space {
         }
     }
 }
-
-class Property extends Space {
-    constructor(id, name, price, rent, housePrice, houseHotel, multiplier, totalHouse, mortgage, color) {
-        super(id, name),
-            this.price = price,
-            this.rent = rent,
-            this.housePrice = housePrice,
-            this.houseHotel = houseHotel,
-            this.multiplier = multiplier,
-            this.totalHouse = totalHouse,
-            this.mortgage = mortgage,
-            this.color = color,
-            this.type = 'property',
-            this.owner = ''
-    }
-
-    getFinalRent() {
-        const th = this.totalHouse;
-        const r = this.rent;
-        const m = this.multiplier;
-        return (r + (10 * m)) * th;
-    }
-
-    hasHouse() {
-        return this.totalHouse > 0;
-    }
-
-    canBuyHouse(player) {
-        const colorLength = $(`.top-bar.${this.color}`).length;
-        const playerTotalColor = player.properties.filter(property => property.color == this.color).length;
-        return colorLength == playerTotalColor ? true : false;
-    }
-
-    buyHouse(player) {
-        if (player.hasMoney(this.housePrice)) {
-            player.pay(this.housePrice);
-            createHouse(this)
-            this.totalHouse += 1;
-        }
-    }
-
-
-
-    handleSpace(player, players) {
-        if (this.owner == '') {
-
-            if (this.confirmAction('new')) {
-                this.buy(player, 'property')
-            }
-
-        } else if (this.owner == player.name) {
-            if (this.canBuyHouse(player)) {
-                if (this.confirmAction('house')) {
-                    this.buyHouse(player);
-                }
-            } else {
-                alert('Voce precisa ter todas as propriedades com mesma cor para construir uma casa!')
-            }
-
-        } else {
-            let finalRent = this.rent;
-            if (this.hasHouse()) {
-                finalRent = this.getFinalRent();
-            }
-            players.forEach(owner => {
-                if (this.owner == owner.name) {
-                    this.payRent(player, owner, finalRent);
-                }
-            });
-        }
-
-    }
-}
-
-class Company extends Space {
-    constructor(id, name, price, rent) {
-        super(id, name),
-            this.price = price,
-            this.rent = rent,
-            this.owner = '',
-            this.color = 'grey'
-    }
-
-    handleSpace(player, players, diceresult) {
-        if (this.owner == '') {
-
-            if (this.confirmAction('new')) {
-                this.buy(player, 'company')
-            }
-
-        } else if (this.owner == player.name) {
-
-            alert('Essa é sua companhia');
-
-        } else {
-
-            players.forEach(owner => {
-                if (this.owner == owner.name) {
-                    const finalRent = this.rent * diceresult;
-                    this.payRent(player, owner, finalRent);
-                }
-            });
-
-        }
-    }
-}
-
-class LuckSetback extends Space {
-    constructor(id, name) {
-        super(id, name);
-        this.cards = luckSetback;
-    }
-    pickCard() {
-        const randomCard = (Math.floor(Math.random() * this.cards.length) + 1);
-        let pickedCard;
-        this.cards.forEach(card => {
-            if (card.id == randomCard) {
-                pickedCard = card;
-            }
-        })
-        return pickedCard;
-
-    }
-    handleSpace(player) {
-        const card = this.pickCard();
-        if (card.type == 'setback') {
-            alert(`${card.description} pague ${card.price}`)
-            player.pay(card.price);
-        } else {
-            alert(`${card.description} receba ${card.price}`);
-            player.receive(card.price);
-        }
-
-    }
-}
-
 
 class Start extends Space {
     constructor(id, name) {
@@ -236,13 +100,8 @@ class Jail extends Space {
         movePawn(player, 10)
     }
 
-    getOutJail(player, dice){
-        if(dice[0]==dice[1]){
-            player.arrested = false;
-        }
-    }
 
-    handleSpace(player, players, dice) {
+    handleSpace(player) {
         player.arrested = true;
         this.moveToJail(player);
     }

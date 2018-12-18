@@ -1,8 +1,8 @@
-
-  movePawn = (player, spaceId) => {
-    const playerColor = $(`.p-${player.color}`);
-    $(playerColor).remove();
-    $(`#${spaceId} .container`).append(playerColor);
+var i = 0;
+movePawn = (player, spaceId) => {
+  const playerColor = $(`.p-${player.color}`);
+  $(playerColor).remove();
+  $(`#${spaceId} .container`).append(playerColor);
 }
 
 updateBalance = (player) => {
@@ -13,12 +13,12 @@ updateBalance = (player) => {
 updatePlayersList = (player, type) => {
   const list = $(`.purchase.${player.color} > ul`);
   let arr = [];
-  if(type == 'property'){
+  if (type == 'property') {
     arr = player.properties;
-  }else{
+  } else {
     arr = player.companies;
   }
-  const space =arr[arr.length -1];
+  const space = arr[arr.length - 1];
   const item = createPurchaseItem();
   item.addClass(space.color);
   item.html(space.name);
@@ -54,7 +54,16 @@ createPawn = () => {
   $('.start .container').append(pawn1);
   $('.start .container').append(pawn2);
 }
+play = (i, players, game) => {
+  console.log(players)
+  if (i == players.length) {
+    i = 0;
+  } else {
+    game.turn(players[i]);
+    play(i++)
 
+  }
+}
 createGame = () => {
   const p1Name = $('#p1').val();
   const p2Name = $('#p2').val();
@@ -75,20 +84,20 @@ startGame = () => {
   $('.start-game').remove();
 
   let turn = true;
+
+
   $('.dice-button').click(() => {
     if (game.verifyEndGame(players)) {
-      if (turn) {
-        game.turn(players[0])
-      } else {
-        game.turn(players[1])
+      if (i == (players.length)) {
+        i = 0;
       }
-      turn = !turn;
+      game.turn(players[i]);
+
     } else {
       alert('fim do jogo')
     }
+
   })
-
-
 }
 
 window.onload = function () {
@@ -97,3 +106,14 @@ window.onload = function () {
   $('.play-button').click(startGame);
 }
 
+
+
+
+
+
+// if (turn) {
+      //   game.turn(players[0])
+      // } else {
+      //   game.turn(players[1])
+      // }
+      // turn = !turn;

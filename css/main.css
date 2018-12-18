@@ -352,6 +352,7 @@ p{
 .dice-result{
 	display: flex;
 	align-items: center;
+	width: 70%;
 }
 .dice-result p{
 	margin-right: 10px;
