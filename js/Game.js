@@ -2,6 +2,7 @@ class Die {
     constructor() {
         this.die1 = this.roll();
         this.die2 = this.roll();
+        this.equal = 0;
     }
     roll() {
         return (Math.floor(Math.random() * 6) + 1);
@@ -31,7 +32,11 @@ class Die {
         return arr;
     }
 
-    
+    isEqual(){
+        this.equal+=1;
+        return this.die1 == this.die2;
+    }
+
     drawDice() {
         const diceRoll = [this.die1, this.die2];
         this.diceImg(diceRoll).forEach((drawedDie, i) => {
@@ -55,13 +60,16 @@ class Game {
                 this.movePlayer(player, die.result());
                 player.arrested = false;
                 player.turnArrested = 0;
-            }else if(die.die1 === die.die2){
+            }else if(die.isEqual()){
                 this.movePlayer(player, die.result());
                 player.arrested = false;
             }
         }
     }
 
+    controllSpace(space, player, diceresult){
+        space.handleSpace(player, this.players, diceresult)
+    }
 
     checkPosition(player, diceresult) {
         const position = player.position;
@@ -70,7 +78,7 @@ class Game {
         $('.dice-result > .die__space').html(`${player.name} caiu em ${space.name}`);
         setTimeout(() => {
             space.handleSpace(player, this.players, diceresult)
-            i++;
+            
         }, 100)
     }
 
@@ -81,12 +89,19 @@ class Game {
     }
 
     
-    turn(player, callback) {
+    turn(player) {
         const die = new Die();
         die.drawDice();
         // $('.dice-result > .die__player').html(`${player.name} tirou`);
         this.jailHandler(player, die);
-        callback;
+        if(!die.isEqual()){
+            i++;
+            if(die.equal == 3){
+                player.arrested = true;
+                this.jailHandler(player);
+            }
+        }
+        
     }
 
     verifyEndGame(players) {
