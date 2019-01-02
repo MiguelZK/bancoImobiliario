@@ -270,7 +270,7 @@ p{
 	background:green;
 }
 
-.fa-home:before {
+.fa-home:before, .fa-building:before {
 	margin-left: 10px;
 }
 

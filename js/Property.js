@@ -1,12 +1,13 @@
 class Property extends Space {
-    constructor(id, name, price, rent, housePrice, houseHotel, multiplier, totalHouse, mortgage, color) {
+    constructor(id, name, price, rent, housePrice, hotelPrice, multiplier, totalHouse, mortgage, color) {
         super(id, name),
             this.price = price,
             this.rent = rent,
             this.housePrice = housePrice,
-            this.houseHotel = houseHotel,
+            this.hotelPrice = hotelPrice,
             this.multiplier = multiplier,
             this.totalHouse = totalHouse,
+            this.totalHotel = 0,
             this.mortgage = mortgage,
             this.color = color,
             this.type = 'property',
@@ -38,6 +39,15 @@ class Property extends Space {
         }
     }
 
+    buyHotel(player) {
+        if (player.hasMoney(this.hotelPrice)) {
+            player.pay(this.hotelPrice);
+            createHotel(this);
+            this.totalHouse = 0;
+            this.totalHotel += 1;
+        }
+    }
+
     handleSpace(player, players) {
         if (this.owner == '') {
 
@@ -47,8 +57,11 @@ class Property extends Space {
 
         } else if (this.owner == player.name) {
             if (this.canBuyHouse(player)) {
-                if (this.confirmAction('house')) {
+                if (this.totalHouse < 4 && this.confirmAction('house')) {
                     this.buyHouse(player);
+                } else if (this.totalHouse == 4 && this.confirmAction('hotel')) {
+                    this.deleteHouses(this);
+                    this.buyHotel(player);
                 }
             } else {
                 alert('Voce precisa ter todas as propriedades com mesma cor para construir uma casa!')

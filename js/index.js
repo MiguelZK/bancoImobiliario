@@ -25,14 +25,29 @@ updatePlayersList = (player, type) => {
   $(list).append(item);
 }
 
+findProperty = (property) =>{
+  return $(`li:contains(${property.name})`);
+}
+
 createHouse = (property) => {
-  const liProperty = $(`li:contains(${property.name})`);
+  const liProperty = findProperty(property);
   const house = document.createElement('I');
   $(house).addClass('fas fa-home');
   $(liProperty).append(house);
-  console.log(house);
 }
 
+createHotel = (property) => {
+  const liProperty = findProperty(property);
+  const hotel = document.createElement('I');
+  $(hotel).addClass('fas fa-building');
+  $(liProperty).append(hotel);
+}
+
+deleteHouses = (property) => {
+  const liProperty = findProperty(property);
+  const houses = liProperty.children();
+  houses.remove();
+}
 createPurchaseItem = () => {
   const item = document.createElement('LI');
   return $(item).addClass('item__purchase');
