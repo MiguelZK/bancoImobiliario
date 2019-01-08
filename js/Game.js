@@ -27,6 +27,7 @@ class Game {
         $('.dice-result > .die__space').html(`${player.name} caiu em ${space.name}`);
         setTimeout(() => {
             space.handleSpace(player, this.players, diceresult)
+            console.log(player.properties)
         }, 100)
     }
 

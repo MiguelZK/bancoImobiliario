@@ -18,7 +18,13 @@ class Property extends Space {
         const th = this.totalHouse;
         const r = this.rent;
         const m = this.multiplier;
-        return (r + (10 * m)) * th;
+        const tHotel = this.totalHotel;
+        if(tHotel > 0){
+            return ((r + (10 * m)) * th)*(2*tHotel);
+        }else{
+            return (r + (10 * m)) * th;
+        }
+        
     }
 
     hasHouse() {
@@ -60,7 +66,7 @@ class Property extends Space {
                 if (this.totalHouse < 4 && this.confirmAction('house')) {
                     this.buyHouse(player);
                 } else if (this.totalHouse == 4 && this.confirmAction('hotel')) {
-                    this.deleteHouses(this);
+                    deleteHouses(this);
                     this.buyHotel(player);
                 }
             } else {
