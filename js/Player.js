@@ -2,7 +2,7 @@ class Player {
     constructor(name, color) {
         this.name = name,
             this.color = color,
-            this.balance = 10808,
+            this.balance = 1808,
             this.properties = [],
             this.companies = [],
             this.position = 0,
