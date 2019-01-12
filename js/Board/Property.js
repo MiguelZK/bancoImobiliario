@@ -19,10 +19,12 @@ class Property extends Space {
         const r = this.rent;
         const m = this.multiplier;
         const tHotel = this.totalHotel;
+        const result = (r + ((m*th)*r));
         if(tHotel > 0){
-            return ((r + (10 * m)) * th)*(2*tHotel);
+            return Math.floor(result + ((100*m)*(tHotel)));
         }else{
-            return (r + (10 * m)) * th;
+            return Math.floor(result);
+           
         }
         
     }
@@ -62,25 +64,21 @@ class Property extends Space {
             }
 
         } else if (this.owner == player.name) {
-            if (this.canBuyHouse(player)) {
+           // if (this.canBuyHouse(player)) {
                 if (this.totalHouse < 4 && this.confirmAction('house')) {
                     this.buyHouse(player);
                 } else if (this.totalHouse == 4 && this.confirmAction('hotel')) {
                     deleteHouses(this);
                     this.buyHotel(player);
                 }
-            } else {
-                alert('Voce precisa ter todas as propriedades com mesma cor para construir uma casa!')
-            }
+            //} else {
+             //   alert('Voce precisa ter todas as propriedades com mesma cor para construir uma casa!')
+           // }
 
-        } else {
-            let finalRent = this.rent;
-            if (this.hasHouse()) {
-                finalRent = this.getFinalRent();
-            }
+        } else {            
             players.forEach(owner => {
                 if (this.owner == owner.name) {
-                    this.payRent(player, owner, finalRent);
+                    this.payRent(player, owner, this.getFinalRent());
                 }
             });
         }

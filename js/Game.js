@@ -27,7 +27,6 @@ class Game {
         $('.dice-result > .die__space').html(`${player.name} caiu em ${space.name}`);
         setTimeout(() => {
             space.handleSpace(player, this.players, diceresult)
-            console.log(player.properties)
         }, 100)
     }
 
@@ -38,7 +37,7 @@ class Game {
     }
 
     
-    turn(player) {
+    play(player) {
         const die = new Die();
         die.drawDice();
         this.jailHandler(player, die);

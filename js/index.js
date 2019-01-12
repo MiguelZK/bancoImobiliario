@@ -10,8 +10,9 @@ updateBalance = (player) => {
   return $(balancePlayer).html(`${player.name} saldo: ${player.balance}`);
 }
 
-updatePlayersList = (player, type) => {
+updatePlayersList = (player, type, property) => {
   const list = $(`.purchase.${player.color} > ul`);
+
   let arr = [];
   if (type == 'property') {
     arr = player.properties;
@@ -19,14 +20,14 @@ updatePlayersList = (player, type) => {
     arr = player.companies;
   }
   const space = arr[arr.length - 1];
-  const item = createPurchaseItem();
+  const item = createPurchaseItem(property.id);
   item.addClass(space.color);
   item.html(space.name);
   $(list).append(item);
 }
 
 findProperty = (property) =>{
-  return $(`li:contains(${property.name})`);
+    return $(`#i${property.id}`);
 }
 
 createHouse = (property) => {
@@ -48,9 +49,9 @@ deleteHouses = (property) => {
   const houses = liProperty.children();
   houses.remove();
 }
-createPurchaseItem = () => {
+createPurchaseItem = (id) => {
   const item = document.createElement('LI');
-  return $(item).addClass('item__purchase');
+  return $(item).addClass('item__purchase').attr('id', `i${id}`);
 }
 createPlayersWallet = (players) => {
   const balances = [...document.getElementsByClassName('balance')];
@@ -88,6 +89,10 @@ createGame = () => {
   return new Game([p1, p2]);
 }
 
+turn = (game, players) =>{
+  i == (players.length) ? i = 0 : null;
+  game.play(players[i]);
+}
 
 startGame = () => {
   const game = createGame();
@@ -98,18 +103,15 @@ startGame = () => {
   $('.start-game').hide(600);
   $('.start-game').remove();
 
-  let turn = true;
+  //let turn = true;
 
 
   $('.dice-button').click(() => {
     if (game.verifyEndGame(players)) {
-      if (i == (players.length)) {
-        i = 0;
-      }
-      game.turn(players[i]);
+      turn(game, players);
 
     } else {
-      alert('fim do jogo')
+      alert('Fim do Jogo')
     }
 
   })

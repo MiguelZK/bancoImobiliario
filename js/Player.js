@@ -2,7 +2,7 @@ class Player {
     constructor(name, color) {
         this.name = name,
             this.color = color,
-            this.balance = 1808,
+            this.balance = 10808,
             this.properties = [],
             this.companies = [],
             this.position = 0,
@@ -10,9 +10,9 @@ class Player {
             this.turnArrested = 0
     }
 
-    hasMoney(value) {
+    hasMoney(value, spaceName) {
         const total = this.balance - value;
-        return total > 0 ? true : alert(`Você não tem saldo para comprar ${this.name}`);
+        return total > 0 ? true : alert(`${this.name} você não tem saldo para comprar ${spaceName}`);
     }
 
     pay(value) {
@@ -35,5 +35,6 @@ class Player {
 
 
     }
+
 
 }
