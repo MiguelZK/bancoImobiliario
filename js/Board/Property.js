@@ -64,16 +64,16 @@ class Property extends Space {
             }
 
         } else if (this.owner == player.name) {
-           // if (this.canBuyHouse(player)) {
+            if (this.canBuyHouse(player)) {
                 if (this.totalHouse < 4 && this.confirmAction('house')) {
                     this.buyHouse(player);
                 } else if (this.totalHouse == 4 && this.confirmAction('hotel')) {
                     deleteHouses(this);
                     this.buyHotel(player);
                 }
-            //} else {
-             //   alert('Voce precisa ter todas as propriedades com mesma cor para construir uma casa!')
-           // }
+            } else {
+                alert('Voce precisa ter todas as propriedades com mesma cor para construir uma casa!')
+           }
 
         } else {            
             players.forEach(owner => {
