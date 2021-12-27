@@ -13,6 +13,11 @@ class Game {
                 this.movePlayer(player, die.result());
                 player.arrested = false;
                 player.turnArrested = 0;
+                player.pay(50); // Adicionei pagamento para 3 jogadas sem sucesso para sair da prisão.
+                alert(`${this} pagou P$ 50 para sair da prisão.
+                
+                Siga sua vida - e olho no caminho, capitalista FDP!`)
+                // Tenter colocar marcador de jogadas no quadradinho da prisão
             }else if(die.isEqual()){
                 this.movePlayer(player, die.result());
                 player.arrested = false;

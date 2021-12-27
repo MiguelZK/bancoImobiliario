@@ -175,10 +175,12 @@ h3{
 }
 .property .top-bar{
 	height: 25px;
-	border-bottom: 2px solid black;
+	margin: 0.2em; /*Margens adicionadas para conteiner de cor*/
+	border: 1px solid rgb(100, 100, 100); /*Cor da borda alterada de preto para cinza e alterada de "botton" para todas faces*/
+	border-radius: 0.3em; /*Arredondamento dos conteineres de cor das propriedades*/
 }
 .property .pink{
-	background-color:rgb(230, 76, 120);
+	background-color:#cf3cc8; /*Alterado tom de rosa*/
 }
 .property .blue{
 	background-color:#486AC3;
@@ -199,7 +201,7 @@ h3{
 	background-color: #41994e;
 }
 .property .dark-blue{
-	background-color: #5a6dba;
+	background-color: #03186e; /*Alterado tom de azul*/
 }
 p{
 	font-size: 0.7rem;
@@ -296,7 +298,7 @@ p{
 	margin-bottom:5px; 
 }
 .items__purchase .pink{
-	border-left: 6px solid rgb(230, 76, 120);
+	border-left: 6px solid #cf3cc8;
 }
 .items__purchase .blue{
 		border-left: 6px solid #486AC3;
@@ -320,7 +322,7 @@ p{
 }
 .items__purchase .dark-blue{
 
-	border-left: 6px solid #5a6dba;
+	border-left: 6px solid #03186e;
 }
 .items__purchase .grey{
 
