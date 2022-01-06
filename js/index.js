@@ -120,10 +120,23 @@ startGame = () => {
 window.onload = function () {
   $('.play').hide();
   $('.wrapper').hide();
-  $('.play-button').click(startGame);
+  $('.nomeEditavel').hide(); // inicia com campo para trocar nome da rua oculto
+  $('.play-button').click(startGame); // inicia o jogo
+  $('.custom-button').click(trocaNomes);
 }
 
-
+trocaNomes = () => {
+  const confirmar = 'Confirmar'
+  $('.nomeOriginal').hide();
+  $('.nomeEditavel').show();
+  $('.custom-button').attr(Confirmar);
+  
+  $('Confirmar').click(() => {
+    const novoNome1 = $('.nomeEditavel').val();
+    $('.nomeOriginal').attr(novoNome1);
+    $('.custom-button').val('NOMES RUAS');
+  });
+}
 
 
 
