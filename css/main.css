@@ -186,7 +186,7 @@ h3{
 	background-color:#486AC3;
 }
 .property .purple{
-	background-color:#5e3577;
+	background-color:#8049a1;
 }
 .property .orange{
 	background-color:#fa811d;
@@ -311,35 +311,35 @@ input .nomeEditavel{
 	margin-bottom:5px; 
 }
 .items__purchase .pink{
-	border-left: 6px solid #cf3cc8; /*Alterado tom de rosa*/
+	border-left: 10px solid #cf3cc8; /*Alterado tom de rosa*/
 }
 .items__purchase .blue{
-		border-left: 6px solid #486AC3;
+		border-left: 10px solid #486AC3;
 }
 .items__purchase .purple{
-		border-left: 6px solid #5e3577;
+		border-left: 10px solid #8049a1; /*Cor alterada para diferenciar do azul escuro*/
 }
 .items__purchase .orange{
-		border-left: 6px solid #fa811d;
+		border-left: 10px solid #fa811d;
 }
 .items__purchase  .red{
-		border-left: 6px solid #f50c2b;
+		border-left: 10px solid #f50c2b;
 }
 .items__purchase .yellow{
 
-	border-left: 6px solid #ffed20;
+	border-left: 10px solid #ffed20;
 }
 .items__purchase .green{
 
-	border-left: 6px solid #41994e;
+	border-left: 10px solid #41994e;
 }
 .items__purchase .dark-blue{
 
-	border-left: 6px solid #03186e;
+	border-left: 10px solid #03186e;
 }
 .items__purchase .grey{
 
-	border-left: 6px solid #c4c4c4;
+	border-left: 10px solid #c4c4c4;
 }
 .btn{
 	padding: 7px 10px;

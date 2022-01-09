@@ -59,6 +59,8 @@ createPlayersWallet = (players) => {
   balances.forEach((balance, i) => {
     $(purchase[i]).addClass(`${players[i].color}`)
     $(balance).addClass(`${players[i].name}`)
+    const corTexto = `${players[i].color}` // puxa o texto da propriedade "color" de "player[i]".
+    $(balance).css("color", corTexto); // Atricui a cor ao texto para identificar o peão mais facilmente.
     $(balance).html(`${players[i].name} saldo: ${players[i].balance}`)
   });
 }
@@ -126,17 +128,41 @@ window.onload = function () {
 }
 
 trocaNomes = () => {
-  const confirmar = 'Confirmar'
-  $('.nomeOriginal').hide();
-  $('.nomeEditavel').show();
-  $('.custom-button').attr(Confirmar);
+  let botao = document.getElementById('custom-button').textContent;
   
-  $('Confirmar').click(() => {
-    const novoNome1 = $('.nomeEditavel').val();
-    $('.nomeOriginal').attr(novoNome1);
-    $('.custom-button').val('NOMES RUAS');
-  });
+  if (botao == `NOMES RUAS`){
+    document.getElementById('custom-button').innerText = `CONFIRMAR`
+    $('.nomeOriginal').hide();
+    $('.nomeEditavel').show();
+  }
+  
+  else if (botao == `CONFIRMAR`){
+    const novoNome1 = document.getElementsByClassName('nomeEditavel');
+    const nomeVelho1 = document.getElementsByClassName('nomeOriginal');
+    alert(`Esta é a primeira rua que muda de nome - e mudou agora para ${novoNome1[0].value}`);
+    nomeVelho1[0].innerHTML = novoNome1[0].value;
+    $('.nomeEditavel').hide();
+    $('.nomeOriginal').show();
+    
+    document.getElementById('custom-button').innerText = `NOMES RUAS`
+  }
+/*
+  mudaNomeBotao();
+  // $(mudaNomeBotao()).attr(confirmar);
+  
+  // $('.custom-button').click(() => {
+    $('.custom-button').click(() => {
+    alert(`Vamos ver se rola trocar os nomes dos imóveis. Manda ver!`);
+    mudaNomeBotao();
+  });*/
 }
+  
+  
+mudaNomeBotao = () => {
+    const botao = document.getElementById('custom-button').textContent;
+    // alert(`O botão atualmente se chama ${botao}`)
+    return botao;
+  }
 
 
 

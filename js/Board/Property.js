@@ -41,7 +41,7 @@ class Property extends Space {
 
     getFinalRent() {
         const th = this.totalHouse;
-        const baseValor = `ho${th}`;
+        const baseValor = `ho${th}`; // Referência baseada no número de casas - considerando que, internamente, hotel = 5 casas;
         const result = this[baseValor];
         // alert(`O valor da diária aqui será ${result}`);
         return result;
@@ -67,22 +67,22 @@ class Property extends Space {
     }
 
     canBuyHouse(player) {
-        const colorLength = $(`.top-bar.${this.color}`).length;
-        const playerTotalColor = player.properties.filter(property => property.color == this.color).length;
-        return colorLength == playerTotalColor ? true : false;
+        const colorLength = $(`.top-bar.${this.color}`).length; // Verifica quantas propriedades da mesma cor existem
+        const playerTotalColor = player.properties.filter(property => property.color == this.color).length; // Filtra as propriedades do player que tem a mesma cor da propriedade onde ele está - guarda na constante o número de propriedades daquela cor.
+        return colorLength == playerTotalColor ? true : false; //Se o número de propriedades é o total da mesma cor, pode construir casa.
     }
 
     buyHouse(player) {
-        if (player.hasMoney(this.housePrice)) {
-            player.pay(this.housePrice);
+        if (player.hasMoney(this.hotel_housePrice)) {
+            player.pay(this.hotel_housePrice);
             createHouse(this)
             this.totalHouse += 1;
         }
     }
 
     buyHotel(player) {
-        if (player.hasMoney(this.hotelPrice)) {
-            player.pay(this.hotelPrice);
+        if (player.hasMoney(this.hotel_housePrice)) {
+            player.pay(this.hotel_housePrice);
             createHotel(this);
             this.totalHouse = 0;
             this.totalHotel += 1;
