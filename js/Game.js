@@ -8,19 +8,20 @@ class Game {
             this.movePlayer(player, die.result());
         } else {
             player.turnArrested += 1;
-            $('.dice-result > .die__space').html(`${player.name} está na prisão`);
-            if (player.turnArrested == 4) {
+            $('.dice-result > .die__space').html(`${player.name} está na prisão`); // Chama o espaço ao lado da imagem dos dados e coloca mensagem ali.
+            if(die.isEqual()){ // Coloquei para cima o teste de dados iguais. Assim, se não conseguir na 3ª jogada, sai com o valor dos dados e paga P$ 50.
                 this.movePlayer(player, die.result());
                 player.arrested = false;
-                player.turnArrested = 0;
+
+            }else if (player.turnArrested == 3) {
+                this.movePlayer(player, die.result()); // Já se move conforme o resultado dos dados.
+                player.arrested = false; // Player deixa de estar marcado como preso.
+                player.turnArrested = 0; // Zera o número de jogadas de dados para sair da prisão.
                 player.pay(50); // Adicionei pagamento para 3 jogadas sem sucesso para sair da prisão.
-                alert(`${this} pagou P$ 50 para sair da prisão.
+                alert(`${this.name} pagou P$ 50 para sair da prisão.
                 
                 Siga sua vida - e olho no caminho, capitalista sacana!`)
                 // Tentar colocar marcador de jogadas no quadradinho da prisão
-            }else if(die.isEqual()){
-                this.movePlayer(player, die.result());
-                player.arrested = false;
             }
         }
     }

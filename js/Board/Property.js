@@ -73,15 +73,15 @@ class Property extends Space {
     }
 
     buyHouse(player) {
-        if (player.hasMoney(this.hotel_housePrice)) {
-            player.pay(this.hotel_housePrice);
-            createHouse(this)
+        if (player.hasMoney(this.hotel_housePrice, `uma casa aqui`)) { // Função hasMoney() está em player.js
+            player.pay(this.hotel_housePrice); // Função pay() está em player.js e tem como parâmetro "value"
+            createHouse(this) // Função createHouse(property) está em index.js e tem como parâmetro "property"
             this.totalHouse += 1;
         }
     }
 
     buyHotel(player) {
-        if (player.hasMoney(this.hotel_housePrice)) {
+        if (player.hasMoney(this.hotel_housePrice, `um hotel aqui`)) {
             player.pay(this.hotel_housePrice);
             createHotel(this);
             this.totalHouse = 0;
@@ -90,28 +90,28 @@ class Property extends Space {
     }
 
     handleSpace(player, players) {
-        if (this.owner == '') {
+        if (this.owner == '') { // Verifica se propriedade possui dono
 
-            if (this.confirmAction('new')) {
-                this.buy(player, 'property')
+            if (this.confirmAction('new')) { // Verifica se deseja comprar a propriedade
+                this.buy(player, 'property') // Se sim, chama a função "buy", que está em space.js
             }
 
-        } else if (this.owner == player.name) {
-            if (this.canBuyHouse(player)) {
-                if (this.totalHouse < 4 && this.confirmAction('house')) {
-                    this.buyHouse(player);
-                } else if (this.totalHouse == 4 && this.confirmAction('hotel')) {
-                    deleteHouses(this);
-                    this.buyHotel(player);
+        } else if (this.owner == player.name) { // Se propriedade é do jogador/player que está na propriedade
+            if (this.canBuyHouse(player)) { // Verifica se pode comprar uma casa (função acima)
+                if (this.totalHouse < 4 && this.confirmAction('house')) { // Se tem menos de 4 casas, pergunta se quer construir uma casa
+                    this.buyHouse(player); // Se sim, constrói +1 casa (função acima)
+                } else if (this.totalHouse == 4 && this.confirmAction('hotel')) { // Se tem 4 casas, pergunta se quer construir hotel
+                    deleteHouses(this); // Se sim, deleta as casas
+                    this.buyHotel(player); // ...e constrói o hotel (função acima)
                 }
-            } else {
+            } else { // Se não pode construir casa (é proprietário, mas não tem todas propriedades daquela cor)
                 alert('Voce precisa ter todas as propriedades com mesma cor para construir uma casa!')
            }
 
-        } else {            
-            players.forEach(owner => {
-                if (this.owner == owner.name) {
-                    this.payRent(player, owner, this.getFinalRent());
+        } else {
+            players.forEach(owner => { // Para cada jogador, itera para ver se é o proprietário do imóvel
+                if (this.owner == owner.name) { // Se o nome de proprietário do imóvel é o "proprietário do teste", tem-se o "owner" para receber
+                    this.payRent(player, owner, this.getFinalRent()); // já tinha o player; agora tem proprietário e roda função p/ saber valor do aluguel.
                 }
             });
         }

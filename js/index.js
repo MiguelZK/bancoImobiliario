@@ -27,14 +27,14 @@ updatePlayersList = (player, type, property) => {
 }
 
 findProperty = (property) =>{
-    return $(`#i${property.id}`);
+    return $(`#i${property.id}`); // Retorna a id do objeto do imóvel, com a letra "i" na frente, para diferenciar as ids.
 }
 
 createHouse = (property) => {
-  const liProperty = findProperty(property);
-  const house = document.createElement('I');
-  $(house).addClass('fas fa-home');
-  $(liProperty).append(house);
+  const liProperty = findProperty(property); // Função acima que busca propriedade/espaço
+  const house = document.createElement('I'); // Cria um elemento HTML <i> (itálico ou alteração na voz...)
+  $(house).addClass('fas fa-home'); // Dentro do elemento "itálico", adiciona a classe de referência à imagem de casinha.
+  $(liProperty).append(house); // Adiciona o elemento que traz nova id do imóvel, com letra "i" na frente.
 }
 
 createHotel = (property) => {

@@ -24,9 +24,9 @@ class Space {
     }
 
     payRent(payer, renter, rent) {
-        renter.receive(rent);
-        payer.pay(rent);
-        alert(`Você caiu na casa de ${(renter.name)} pague ${rent}`);
+        alert(`Você caiu na casa de ${(renter.name)} pague ${rent}`); // Mensagem colocada acima, para valores alterarem depois da mensagem.
+        renter.receive(rent); // Locatário recebe (função de player.js)
+        payer.pay(rent); // Locador paga (função de player.js)
     }
 
     buy(player, type) {
