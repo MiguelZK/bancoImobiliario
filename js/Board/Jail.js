@@ -4,13 +4,14 @@ class Jail extends Space {
     }
 
     moveToJail(player) {
-        player.position = 10;
-        movePawn(player, 10)
+        alert(`Parece que ${player} vai ver o sol quadrado umas rodadas...`); // Adicionei mensagem.
+        player.position = 10; // Altera a propriedade position do objeto player.
+        movePawn(player, 10) // Função de mover o peão para a mesma posição no tabuleiro.
     }
 
 
-    handleSpace(player) {
-        player.arrested = true;
-        this.moveToJail(player);
+    handleSpace(player) { // Sobreescreve o método que vem de space.js, da classe Space.
+        player.arrested = true; // Muda a propriedade "arrested" do objeto Player para "true"
+        this.moveToJail(player); // Executa a função moveToJail, acima.
     }
 }

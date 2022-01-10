@@ -1,8 +1,8 @@
 var i = 0;
-movePawn = (player, spaceId) => {
-  const playerColor = $(`.p-${player.color}`);
-  $(playerColor).remove();
-  $(`#${spaceId} .container`).append(playerColor);
+movePawn = (player, spaceId) => { // Método para mover peão no tabuleiro
+  const playerColor = $(`.p-${player.color}`); // Cria constante que recebe objeto HTML com clase "p-" + cor do player (ex: "p-green");
+  $(playerColor).remove(); // Remove este mesmo elemento de onde estiver no tabuleiro;
+  $(`#${spaceId} .container`).append(playerColor); // Adiciona o elemento HTML do peão (div) onde tem "id" do argumento "spaceId" e classe "container".
 }
 
 updateBalance = (player) => {
@@ -49,10 +49,12 @@ deleteHouses = (property) => {
   const houses = liProperty.children();
   houses.remove();
 }
+
 createPurchaseItem = (id) => {
   const item = document.createElement('LI');
   return $(item).addClass('item__purchase').attr('id', `i${id}`);
 }
+
 createPlayersWallet = (players) => {
   const balances = [...document.getElementsByClassName('balance')];
   const purchase = [...document.getElementsByClassName('purchase')]
@@ -60,10 +62,11 @@ createPlayersWallet = (players) => {
     $(purchase[i]).addClass(`${players[i].color}`)
     $(balance).addClass(`${players[i].name}`)
     const corTexto = `${players[i].color}` // puxa o texto da propriedade "color" de "player[i]".
-    $(balance).css("color", corTexto); // Atricui a cor ao texto para identificar o peão mais facilmente.
+    $(balance).css("color", corTexto); // Atribui a cor ao texto para identificar o peão mais facilmente.
     $(balance).html(`${players[i].name} saldo: ${players[i].balance}`)
   });
 }
+
 createPawn = () => {
   const pawn1 = document.createElement('DIV');
   $(pawn1).addClass('pawn p-green');
@@ -72,6 +75,7 @@ createPawn = () => {
   $('.start .container').append(pawn1);
   $('.start .container').append(pawn2);
 }
+
 play = (i, players, game) => {
   console.log(players)
   if (i == players.length) {
@@ -82,23 +86,24 @@ play = (i, players, game) => {
 
   }
 }
+
 createGame = () => {
-  const p1Name = $('#p1').val();
-  const p2Name = $('#p2').val();
-  const p1 = new Player(p1Name, 'green');
-  const p2 = new Player(p2Name, 'blue');
-  createPlayersWallet([p1, p2]);
-  return new Game([p1, p2]);
+  const p1Name = $('#p1').val(); // Cria a constante p1Name, que guarda o valor do input com id p1 no HTML buscado pelo código JQuery;
+  const p2Name = $('#p2').val(); // Cria a constante p2Name, que guarda o valor do input com id p2 no HTML buscado pelo código JQuery;
+  const p1 = new Player(p1Name, 'green'); // Cria a const p1, que guarda o objeto "Player" verde, com o nome da const p1Name;
+  const p2 = new Player(p2Name, 'blue'); // Cria a const p2, que guarda o objeto "Player" azul, com o nome da const p2Name;
+  createPlayersWallet([p1, p2]); // Cria a carteira dos jogadores no centro do tabuleiro, recebendo como argumento as constantes que referenciam os objetos "Player", no seu parâmetro - o array "Players";
+  return new Game([p1, p2]); // Cria um objeto "Game" com um array de 2 objetos "Player" (p1 e p2) criados acima, neste método.
 }
 
-turn = (game, players) =>{
-  i == (players.length) ? i = 0 : null;
-  game.play(players[i]);
+turn = (game, players) =>{ // Método "turn", com parâmetros "game" e "players" - define o turno de quem é a jogada;
+  i == (players.length) ? i = 0 : null; // Se "i" é igual a "players.length" (que tem sempre 2 no formato atual), "i" é zerado. se "i == 0" ou "i == 1" (que representa o índice do jogador em "players"), não acontece nada;
+  game.play(players[i]); 
 }
 
 startGame = () => {
-  const game = createGame();
-  const players = game.players;
+  const game = createGame(); // Cria a const "game", que recebe o retorno do método "createGame()";
+  const players = game.players; // Cria a const "players", que recebe o array "players" do objeto "Game";
   $('.play').show(600);
   $('.wrapper').show(600);
   createPawn();
@@ -122,8 +127,8 @@ startGame = () => {
 window.onload = function () {
   $('.play').hide();
   $('.wrapper').hide();
-  $('.nomeEditavel').hide(); // inicia com campo para trocar nome da rua oculto
-  $('.play-button').click(startGame); // inicia o jogo
+  $('.nomeEditavel').hide(); // inicia com campo para trocar nome da rua oculto;
+  $('.play-button').click(startGame); // inicia o jogo;
   $('.custom-button').click(trocaNomes);
 }
 
@@ -132,6 +137,7 @@ trocaNomes = () => {
   
   if (botao == `NOMES RUAS`){
     document.getElementById('custom-button').innerText = `CONFIRMAR`
+    $('.play-button').hide(); // Esconde, pelo menos, por enquanto, para não começar o jogo com imóveis no meio da edição;
     $('.nomeOriginal').hide();
     $('.nomeEditavel').show();
   }
@@ -140,7 +146,10 @@ trocaNomes = () => {
     const novoNome1 = document.getElementsByClassName('nomeEditavel');
     const nomeVelho1 = document.getElementsByClassName('nomeOriginal');
     alert(`Esta é a primeira rua que muda de nome - e mudou agora para ${novoNome1[0].value}`);
+    $('.play-button').show(); // Esconde, pelo menos, por enquanto, para não começar o jogo com imóveis no meio da edição;
     nomeVelho1[0].innerHTML = novoNome1[0].value;
+    // board[21].name = novoNome1[0].value;
+    // console.log(board[21].name);
     $('.nomeEditavel').hide();
     $('.nomeOriginal').show();
     
@@ -157,15 +166,13 @@ trocaNomes = () => {
   });*/
 }
   
-  
+/*  
 mudaNomeBotao = () => {
     const botao = document.getElementById('custom-button').textContent;
     // alert(`O botão atualmente se chama ${botao}`)
     return botao;
   }
-
-
-
+*/
 
 // if (turn) {
       //   game.turn(players[0])

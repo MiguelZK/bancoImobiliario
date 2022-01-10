@@ -27,18 +27,18 @@ class Game {
     }
 
     checkPosition(player, diceresult) {
-        const position = player.position;
-        const space = board[position];
-        movePawn(player, position);
-        $('.dice-result > .die__space').html(`${player.name} caiu em ${space.name}`);
-        setTimeout(() => {
-            space.handleSpace(player, this.players, diceresult)
+        const position = player.position; // Cria constante com valor de onde o player vai cair nesta jogada (a "position" foi atualizada antes em player.move, em "player.js");
+        const space = board[position]; // Cria constante que indica no tabuleiro essa posição e busca em "data.js", no array "board" e cria objeto do imóvel (A CONFIRMAR: toda vez cria o objeto novamente?);
+        movePawn(player, position); // Método está em index.js. Move o peão no tabuleiro manipulando posição de elemento HTML do peão.
+        $('.dice-result > .die__space').html(`${player.name} caiu em ${space.name}`); // Atualiza mensagem no espaço ao lado da imagem dos dados;
+        setTimeout(() => { // Define 0,1 segundo para iniciar o tratador do espaço onde caiu o peão. 🤷🏼‍♂️
+            space.handleSpace(player, this.players, diceresult) // Chama o tratador de espaços conforme do espaço onde caiu o peão;
         }, 100)
     }
 
 
     movePlayer(player, diceresult) {
-        player.move(diceresult);
+        player.move(diceresult); // Verifica a posição onde o player vai cair nessa jogada. Método em player.js;
         this.checkPosition(player, diceresult);
     }
 
@@ -50,6 +50,9 @@ class Game {
         if(!die.isEqual()){
             i++;
             if(die.equal == 3){
+            /*    alert(`Então ${player.name} tirou dados iguais pela TERCEIRA VEZ?
+                
+                Melhor guardar ele pra ver se não tem trampa aí!`) // Alerta para indicar que houve prisão por 3x de números iguais;*/
                 player.arrested = true;
                 this.jailHandler(player);
             }

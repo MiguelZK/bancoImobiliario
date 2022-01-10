@@ -4,6 +4,8 @@ class Space {
         this.name = name;
     }
 
+    
+
     confirmAction(action) {
         let phrase = '';
         switch (action) {
@@ -30,16 +32,16 @@ class Space {
     }
 
     buy(player, type) {
-        if (player.hasMoney(this.price, this.name)) {
-            if (type == 'property') {
-                player.properties.push(this)
-                updatePlayersList(player, type, this);
+        if (player.hasMoney(this.price, this.name)) { // Verifica se player tem dinheiro (função "hasMoney", em player.js)
+            if (type == 'property') { // Verifica se é "property" (imóveis, bairros, ruas) ou companhias
+                player.properties.push(this) // Adiciona ao array de "properties" do objeto player
+                updatePlayersList(player, type, this); // Atualiza a lista visível no tabuleiro, adicionando linha ao HTML com o item
             } else if (type == 'company') {
-                player.companies.push(this);
-                updatePlayersList(player, type, this);
+                player.companies.push(this); // Adiciona ao array de companhias do objeto player
+                updatePlayersList(player, type, this); // Atualiza a lista visível no tabuleiro, adicionando linha ao HTML com o item
             }
-            player.pay(this.price);
-            this.owner = player.name;
+            player.pay(this.price); // Jogador paga (função pay, em player.js)
+            this.owner = player.name; // Propriedade "owner" do imóvel é alterada para ficar com o nome do player
         }
     }
 }
