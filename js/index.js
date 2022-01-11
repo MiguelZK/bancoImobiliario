@@ -53,6 +53,7 @@ createPurchaseItem = (id) => {
   const item = document.createElement('LI');
   return $(item).addClass('item__purchase').attr('id', `i${id}`);
 }
+
 createPlayersWallet = (players) => {
   const balances = [...document.getElementsByClassName('balance')];
   const purchase = [...document.getElementsByClassName('purchase')]
@@ -64,6 +65,7 @@ createPlayersWallet = (players) => {
     $(balance).html(`${players[i].name} saldo: ${players[i].balance}`)
   });
 }
+
 createPawn = () => {
   const pawn1 = document.createElement('DIV');
   $(pawn1).addClass('pawn p-green');
@@ -72,6 +74,7 @@ createPawn = () => {
   $('.start .container').append(pawn1);
   $('.start .container').append(pawn2);
 }
+
 play = (i, players, game) => {
   console.log(players)
   if (i == players.length) {
@@ -131,20 +134,33 @@ trocaNomes = () => {
   let botao = document.getElementById('custom-button').textContent;
   
   if (botao == `NOMES RUAS`){
-    document.getElementById('custom-button').innerText = `CONFIRMAR`
+    document.getElementById('custom-button').innerText = `CONFIRMAR`;
+    $('.play-button').hide(); // Esconde, pelo menos, por enquanto, para não começar o jogo com imóveis no meio da edição;
     $('.nomeOriginal').hide();
     $('.nomeEditavel').show();
   }
   
   else if (botao == `CONFIRMAR`){
+    // board.forEach(id)
     const novoNome1 = document.getElementsByClassName('nomeEditavel');
     const nomeVelho1 = document.getElementsByClassName('nomeOriginal');
-    alert(`Esta é a primeira rua que muda de nome - e mudou agora para ${novoNome1[0].value}`);
-    nomeVelho1[0].innerHTML = novoNome1[0].value;
+    let indice = 0;
+    // alert(`Esta é a primeira rua que muda de nome - e mudou agora para ${novoNome1[0].value}`);
+    $('.play-button').show(); // Aqui já mostra o botão pra iniciar o jogo novamente;
+    for(let nome of novoNome1){
+      if(nome.value != "") {
+        nomeVelho1[indice].innerHTML = nome.value;
+        // nomeVelho1.innerHTML = novoNome1.value;
+        const obj = nome.parentNode.parentNode.id;
+        board[obj].name = nome.value;
+      }
+      indice++;
+    }
+    // console.log(board[21].name);
     $('.nomeEditavel').hide();
     $('.nomeOriginal').show();
     
-    document.getElementById('custom-button').innerText = `NOMES RUAS`
+    document.getElementById('custom-button').innerText = `NOMES RUAS`;
   }
 /*
   mudaNomeBotao();
