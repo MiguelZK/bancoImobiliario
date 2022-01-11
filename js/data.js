@@ -1,57 +1,247 @@
 const luckSetback = [{
-    id: 1,
-    type: 'luck',
-    price: 100,
-    description: 'O seu cachorro policial tirou o 1º prêmio na exposição do Kennel Club'
-},
-{
-    id: 2,
-    type: 'setback',
-    price: 100,
-    description: 'Parabéns! Você convidou seus amigos para festejar o aniversário'
-},
-{
-    id: 3,
-    type: 'setback',
-    price: 100,
-    description: 'Você é papai outra vez! Despesas de maternidade'
-},
-{
-    id: 4,
-    type: 'luck',
-    price: 45,
-    description: 'Você saiu de férias e se hospedou na casa de um amigo. Você economizou o hotel'
-},
-{
-    id: 5,
-    type: 'luck',
-    price: 45,
-    description: 'Você saiu de férias e se hospedou na casa de um amigo. Você economizou o hotel'
-},
-{
-    id: 6,
-    type: 'luck',
-    price: 200,
-    description: 'Você está com sorte. Suas ações na Bolsa de Valores estão em alta'
-},
-{
-    id: 7,
-    type: 'setback',
-    price: 45,
-    description: 'Seus parentes do interior vieram passar umas "férias" na sua casa'
-},
-{
-    id: 8,
-    type: 'luck',
-    price: 150,
-    description: 'Seus parentes do interior vieram passar umas "férias" na sua casa'
-},
-{
-    id: 9,
-    type: 'luck',
-    price: 150,
-    description: 'Inesperadamente você recebeu uma herança que já estava esquecida'
-}
+        id: 1,
+        type: 'setback',
+        price: 70,
+        description: `Reformaste a casa, com crédito na Ferragem da rua Felipe Camarão, no Bom Fim, em Porto Alegre.`
+    },	
+    {	
+        id: 2,
+        type: 'luck',
+        price: 50,
+        description: `Teu livro vai ser publicado pela Artes e Ofícios`
+    },	
+    {	
+        id: 3,
+        type: 'luck',
+        price: 0,
+        description: `VOCÊ GANHOU O JOGO! SQN.
+    
+        Guarda essa carta e não mostra PRA NINGUÉM!
+    
+        Faz cara de mistério e, no final, entrega a carta pro verdadeiro ganhador.
+        
+        De vez em quando, faz um sinal como se fosse algo importante essa carta.
+        
+        Mas não é.`
+    },	
+    {	
+        id: 4,
+        type: 'luck',
+        price: 80,
+        description: `Você tirou dinheiro de ações e investiu em criptomoedas
+    (Bitcoins, Petro e outras)`
+    },	
+    {	
+        id: 5,
+        type: 'setback',
+        price: 65,
+        description: `Tu vai fazer iniciação em Reiki e à vista é mais barato!`
+    },	
+    {	
+        id: 6,
+        type: 'setback',
+        price: 70,
+        description: `Férias em Gramado com tooooda família!`
+    },	
+    {	
+        id: 7,
+        type: 'luck',
+        price: 10,
+        description: `Ganhou o campeonato de cuspe à distância.`
+    },	
+    {	
+        id: 8,
+        type: 'setback',
+        price: 50,
+        description: `Tua empresa vai patrocinar a Festa da Uva, em Caxias do Sul.`
+    },	
+    {	
+        id: 9,
+        type: 'luck',
+        price: 40,
+        description: `Tu vendeu os discos de vinil no brique, os gibis pra livraria Londres e umas quinquilharias na Feira de Antiquários.`
+    },	
+    {	
+        id: 10,
+        type: 'luck',
+        price: 100,
+        description: `Teu cachorro tirou o 1º lugar na exposição do Kennel Club.
+    
+        Vão pagar em ração. :(
+        
+        Mas tu vai economizar em ração um tempo! :)`
+    },	
+    {	
+        id: 11,
+        type: 'setback',
+        price: 40,
+        description: `A friaca matou tua pimenta da sorte - compre outra.`
+    },	
+    {	
+        id: 12,
+        type: 'luck',
+        price: 100,
+        description: `Após problemas com herança, uma parte do dinheiro veio pra ti.`
+    },	
+    {	
+        id: 13,
+        type: 'setback',
+        price: 50,
+        description: `Teus cachorros precisam ser vacinados.
+    
+       Outra vez.`
+    },	
+    {	
+        id: 14,
+        type: 'setback',
+        price: 20,
+        description: `Chegou o acampamento de verão das crianças.
+    
+        E teus filhos vão. NÉÉÉAAAN?!`
+    },	
+    {	
+        id: 15,
+        type: 'setback',
+        price: 100,
+        description: `Tu resolveu fazer uma churrascada pra comemorar teu aniversário.
+    
+        E vai bancar tudo sozinho,`
+    },	
+    {	
+        id: 16,
+        type: 'luck',
+        price: 60,
+        description: `Prefeitura precisou fazer uma obra no teu pátio e, depois de algum tempo, te indenizou.`
+    },	
+    {	
+        id: 17,
+        type: 'luck',
+        price: 100,
+        description: `Indo no parque do bairro rico, tu encontrou uma carteira com dinheiro e documentos.
+    
+        Devolveu ao dono e foi recompensado por isso!`
+    },	
+    {	
+        id: 18,
+        type: 'luck',
+        price: 25,
+        description: `Flanelinha foi moscão e riscaram teu carro.
+    
+        Mas tu tinha seguro!`
+    },	
+    {	
+        id: 19,
+        type: 'setback',
+        price: 25,
+        description: `Teu condomínio quer colocar banquinhos na frente do prédio para os velhinhos ficarem sentados olhando a rua.`
+    },	
+    {	
+        id: 20,
+        type: 'luck',
+        price: 0,
+        description: `Você tirou o 1º lugar no torneio de ping-pong no bar dos pinguços do teu bairro. Parabéns
+    
+        Receba um abraço de cada jogador.
+        
+        Mas em dinheiro...`
+    },	
+    {	
+        id: 21,
+        type: 'setback',
+        price: 150,
+        description: `Votou neste governo... e fecharam a escola pública que tinha perto de casa.
+    
+        Agora paga a 1ª mensalidade da particular.`
+    },	
+    {	
+        id: 22,
+        type: 'luck',
+        price: 80,
+        description: `Um amigo lembrou de uma grana que te devia
+        (e tu nem lembrava mais)`
+    },	
+    {	
+        id: 23,
+        type: 'setback',
+        price: 45,
+        description: `Resolveram receber os parentes de Caxias E de Canoas em casa.
+    
+        Tem que alimentar essa galera`
+    },	
+    {	
+        id: 24,
+        type: 'luck',
+        price: 25,
+        description: `Você ganhou no jogo do bicho! Busca o prêmio na tabacaria da Felipe Camarão, perto da Osvaldo`
+    },	
+    {	
+        id: 25,
+        type: 'setback',
+        price: 30,
+        description: `Teve uma festa imperdível, e vocês resolveram ir.`
+    },	
+    {	
+        id: 26,
+        type: 'luck',
+        price: 40,
+        description: `Te chamaram pra um freela de JS.`
+    },	
+    {	
+        id: 27,
+        type: 'setback',
+        price: 30,
+        description: `Você estacionou seu carro em local proibido e entrou na contramão.
+    
+        E um azulzinho viu`
+    },	
+    {	
+        id: 28,
+        type: 'luck',
+        price: 45,
+        description: `Tu saiu de férias e te hospedou na casa de um amigo.
+    
+        Economizou o hotel!`
+    },	
+    {	
+        id: 29,
+        type: 'setback',
+        price: 25,
+        description: `Voce se fodeu.`
+    },	
+    {	
+        id: 30,
+        type: 'luck',
+        price: 50,
+        description: `Tu trocou teu carro por uma meia usada...
+    
+        ...mas a meia era de uma celebridade!
+        Sem saber, vendeste muito barato.
+        (poderia ter cobrado muito mais...)`
+    },	
+    {	
+        id: 31,
+        type: 'luck',
+        price: 100,
+        description: `Tu foi promovido a diretor do IFRS.
+        YEEEAAAAAAH!`
+    },	
+    {	
+        id: 32,
+        type: 'luck',
+        price: 40,
+        description: `Você estava protegido contra a urucubaca que o jogador da sua direita fez.
+    
+        Ele se fodeu
+        
+        (e ele que te dará dinheiro)
+        Mas ainda não vai sair da carteira dele esse dinheiro...`
+    },	
+    {	
+        id: 33,
+        type: 'luck',
+        price: 70,
+        description: `Tu realizou a promoção de um evento e recebeu uma boa grana por isso!`
+    }
 ]
 // Alterei porpriedades, dando valores para número de casas e hoteis no lugar de ter um valor multiplicador.
 const board = [

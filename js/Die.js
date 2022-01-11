@@ -5,7 +5,6 @@ class Die {
         this.equal = 0;
     }
     roll() {
-        alert
         return (Math.floor(Math.random() * 6) + 1);
     }
 

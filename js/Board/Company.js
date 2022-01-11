@@ -15,8 +15,9 @@ class Company extends Space {
             }
 
         } else if (this.owner == player.name) {
-
-            alert('Essa é sua companhia');
+            alert(`Fazendo uma inspeção, ${player.name}?
+            
+            ${this.name} já é sua.`);
 
         } else {
 
