@@ -133,7 +133,7 @@ window.onload = function () {
 trocaNomes = () => {
   let botao = document.getElementById('custom-button').textContent;
   
-  if (botao == `NOMES RUAS`){
+  if (botao == `EDITAR RUAS`){
     document.getElementById('custom-button').innerText = `CONFIRMAR`;
     $('.play-button').hide(); // Esconde, pelo menos, por enquanto, para não começar o jogo com imóveis no meio da edição;
     $('.nomeOriginal').hide();
@@ -160,7 +160,7 @@ trocaNomes = () => {
     $('.nomeEditavel').hide();
     $('.nomeOriginal').show();
     
-    document.getElementById('custom-button').innerText = `NOMES RUAS`;
+    document.getElementById('custom-button').innerText = `EDITAR RUAS`;
   }
 /*
   mudaNomeBotao();
